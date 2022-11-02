@@ -26,7 +26,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/example', function () {
     return response()->json([
         'title' => 'The Great Gatsby',
@@ -37,16 +36,9 @@ Route::get('/example', function () {
 Route::get('/projects/create', [ProjectController::class, 'create']);
 
 # All Projects
-/*Route::get('/projects', function () {
-    # In the future we could query a database for all the projects
-    # But for now we'll just return this hypothetical placeholder
-    return 'Here are all the projects...';
-});*/
-
 Route::get('/projects', [ProjectController::class, 'index']);
 
 # Individual Project
-
 Route::get('/projects/{title}', [ProjectController::class, 'show']);
 
 # Note the use of the post method in this route

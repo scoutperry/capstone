@@ -3,22 +3,94 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Project;
+use Illuminate\Support\Str;
+
 
 class ProjectController extends Controller
 {
     public function index()
     {
-        # TODO: Query the database for all the books;
+        
+        $projects = Project::orderBy('title', 'ASC')->get();
+        
+        return view('projects/index', ['projects' => $projects,]);
+        
+        
+        # TODO: Query the database for all the projects;
         return 'Here are all of the projects...';
     }
 
+    /*
+    #Review validation for additional values
+
+    public function store(Request $request) 
+    {
+        $request->validate([
+            'title' => 'required',
+            //'slug' => 'required',
+            'staff_first' => 'required',
+            'staff_last' => 'required',
+            'department' => 'required',
+            'location' => 'required',
+            'additional_staff' => '',
+            'estimated_cost' => 'required|numeric',
+            'additional_equip' => '',
+            'additional_services' => '',
+            'summary' => 'required',
+            'has_dependent' => '',
+            'depends_on' => '',
+            'estimated_duration' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ]);
+
+        $project->title = $request->title;
+        $project->slug = $request->slug;
+        $project->staff_first = $request->staff_first;
+        $project->staff_last = $request->staff_last;
+        $project->department = $request->department;
+        $project->location = $request->location;
+        $project->additional_staff = $request->additional_staff;
+        $project->estimated_cost = $request->estimated_cost;
+        $project->additional_equip = $request->additional_equip;
+        $project->additional_services = $request->additional_services;
+        $project->summary = $request->summary;
+        $project->has_dependent = $request->has_dependent;
+        $project->depends_on = $request->depends_on;
+        $project->estimated_duration = $request->estimated_duration;
+        $project->start_date = $request->start_date;
+        $project->end_date = $request->end_date;
+
+        $project->save();
+
+        return redirect('/projects/create')->with(['flash-alert' => 'Your project was added!']);
+        // returns http://e15p3.loc/projects, "page expired"
+
+    }*/
+
     public function show($title)
     {
-    # TODO: Query the database for the book where title = $title
 
         return view('projects/show', [
         'title' => $title
-        ]);    
+        ]); 
+        
+        /*
+        # TODO define 'findBySlug
+
+        $project = Project::findBySlug($slug);
+        if (!$project) {
+
+            return redirect('/projects')->with(['flash-alert' => 'Project not found.']);
+        }
+        //$onList = $Project->users()->where('user_id', $request->user()->id)->count() >= 1;
+        else
+        return view('projects/show', [
+            'project' => $project,
+            //'onList' => $onList
+
+        ]);*/
     }
 /**
 * GET /projects/create
@@ -48,7 +120,7 @@ class ProjectController extends Controller
  # Note: If validation fails, it will automatically redirect the visitor back to the form page
  # and none of the code that follows will execute.
 
-        # Code will eventually go here to add the book to the database, 
+        # Code will eventually go here to add the project to the database, 
         # but for now we'll just dump the form data to the page for proof of concept
         dump($request->all());
     }

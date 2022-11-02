@@ -10,9 +10,20 @@ this .css file does not exist yet, but we can create it
 @endsection
 
 @section('content')
-    <h1></h1>
+    <h1>All Projects</h1>
 
-    <p>
-        Details about this project will go here...
-    </p>
+
+
+    @if (count($projects) == 0)
+        No projects have been added yet...
+    @else
+        <div id='projects'>
+            @foreach ($projects as $project)
+                <a class='project' href='/projects/{{ $project->slug }}'>
+                    <h3>{{ $project['title'] }}</h3>
+                </a>
+                </a>
+            @endforeach
+        </div>
+    @endif
 @endsection

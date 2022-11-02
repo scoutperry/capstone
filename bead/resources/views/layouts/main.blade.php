@@ -14,6 +14,34 @@
         <p>Project management for the Worcester Art Museum</p>
     </header>
 
+    <nav>
+        <ul class="nav">
+            <li><a href='/'>Home</a></li>
+            <li><a href='/projects'>Projects</a></li>
+            <li><a href='/projects/create'>Create</a></li>
+            <li><a href='/projects/show'>View</a></li>
+            <li><a href='/projects/edit'>Edit</a></li>
+            <li><a href='/directory'>Directory</a></li>
+            <li><a href='/account'>Account</a></li>
+        </ul>
+    </nav>
+
+    <!--<div class="navbar">
+        <a href='/'>Home</a>
+        <div class="dropdown">
+            <button class="dropbtn"><a href='projects'>Projects</a>
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href='projects/create'>Create</a>
+                <a href='projects/show'>View</a>
+                <a href='projects/edit'>Edit</a>
+            </div>
+            <a href='/directory'>Directory</a>
+            <a href='/account'>Account</a>
+        </div>
+    </div>-->
+
     <section>
         @yield('content')
     </section>
