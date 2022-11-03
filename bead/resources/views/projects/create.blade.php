@@ -14,61 +14,110 @@ this .css file does not exist yet, but we can create it
 @endsection
 
 @section('content')
-    <h1>Add a Project Proposal</h1>
+    <h1>
+        Add a Project Proposal</h1>
     {{-- Missing required fields --}}
     <form method='POST' action='/projects'>
         <div class='details'>* Required fields</div>
 
         {{ csrf_field() }}
 
+
         <label for='title'>* Project Title:</label>
         <input type='text' name='title' id='title' value='{{ old('title') }}'>
-        {{-- @include('includes/error-field', ['fieldName' => 'title']) --}}
+        @if ($errors->get('title'))
+            <div class='error'>{{ $errors->first('title') }}</div>
+        @endif
         <br>
+        {{-- @include('includes/error-field', ['fieldName' => 'title']) --}}
 
         <label for='staff_first'>* First name:</label>
-        <input type='text' name='staff_first' id='staff_first' value='{{ old('staff_first') }}'><br>
-
+        <input type='text' name='staff_first' id='staff_first' value='{{ old('staff_first') }}'>
+        @if ($errors->get('staff_first'))
+            <div class='error'>{{ $errors->first('staff_first') }}</div>
+        @endif
+        <br>
         <label for='staff_last'>* Last name:</label>
-        <input type='text' name='staff_last' id='staff_last' value='{{ old('staff_last') }}'><br>
+        <input type='text' name='staff_last' id='staff_last' value='{{ old('staff_last') }}'>
+        @if ($errors->get('staff_last'))
+            <div class='error'>{{ $errors->first('staff_last') }}</div>
+        @endif
+        <br>
 
         <label for='department'>* Your department:</label>
-        <input type='text' name='department' id='department' value='{{ old('department') }}'><br>
+        <input type='text' name='department' id='department' value='{{ old('department') }}'>
+        @if ($errors->get('department'))
+            <div class='error'>{{ $errors->first('department') }}</div>
+        @endif
+        <br>
 
         <label for='location'>* Location Project takes place:</label>
-        <input type='text' name='location' id='location' value='{{ old('location') }}'><br>
+        <input type='text' name='location' id='location' value='{{ old('location') }}'>
+        @if ($errors->get('location'))
+            <div class='error'>{{ $errors->first('location') }}</div>
+        @endif
+        <br>
 
         <label for='additional_staff'>Additional staff needed:</label>
-        <input type='text' name='additional_staff' id='additional_staff' value='{{ old('additional_staff') }}'><br>
-
+        <input type='text' name='additional_staff' id='additional_staff' value='{{ old('additional_staff') }}'>
+        @if ($errors->get('additional_staff'))
+            <div class='error'>{{ $errors->first('additional_staff') }}</div>
+        @endif
+        <br>
         <label for='estimated_cost'>* Estimated Cost of Project:</label>
-        <input type='number' id='estimated_cost' name='estimated_cost' value='{{ old('estimated_cost') }}'><br>
-
+        <input type='number' id='estimated_cost' name='estimated_cost' value='{{ old('estimated_cost') }}'>
+        @if ($errors->get('estimated_cost'))
+            <div class='error'>{{ $errors->first('estimated_cost') }}</div>
+        @endif
+        <br>
         <label for='additional_equip'>Additional equipment needed:</label>
-        <input type='text' name='additional_equip' id='additional_equip' value='{{ old('additional_equip') }}'><br>
-
+        <input type='text' name='additional_equip' id='additional_equip' value='{{ old('additional_equip') }}'>
+        @if ($errors->get('additional_equip'))
+            <div class='error'>{{ $errors->first('additional_equip') }}</div>
+        @endif
+        <br>
         <label for='additional_services'>Additional services needed:</label>
-        <input type='text' name='additional_services' id='additional_services'
-            value='{{ old('additional_services') }}'><br>
-
+        <input type='text' name='additional_services' id='additional_services' value='{{ old('additional_services') }}'>
+        @if ($errors->get('additional_services'))
+            <div class='error'>{{ $errors->first('additional_services') }}</div>
+        @endif
+        <br>
         <label for='summary'>* Summary of project:</label>
-        <input type='text' name='summary' id='summary' value='{{ old('summary') }}'><br>
-
+        <input type='text' name='summary' id='summary' value='{{ old('summary') }}'>
+        @if ($errors->get('summary'))
+            <div class='error'>{{ $errors->first('summary') }}</div>
+        @endif
+        <br>
         <label for='has_dependent'>Check if project will enable other proposed projects:</label>
-        <input type='checkbox' id='has_dependent' name='has_dependent' value='has_dependent'><br>
-
+        <input type='checkbox' id='has_dependent' name='has_dependent' value='has_dependent'>
+        @if ($errors->get('has_dependent'))
+            <div class='error'>{{ $errors->first('has_dependent') }}</div>
+        @endif
+        <br>
         <label for='depends_on'>Check if project is dependent on another proposed project:</label>
-        <input type='checkbox' id='depends_on' name='depends_on' value='depends_on'><br>
-
+        <input type='checkbox' id='depends_on' name='depends_on' value='depends_on'>
+        @if ($errors->get('depends_on'))
+            <div class='error'>{{ $errors->first('depends_on') }}</div>
+        @endif
+        <br>
         <label for='estimated_duration'>* Estimated Duration of project:</label>
-        <input type='text' id='estimated_duration' name='estimated_duration'
-            value='{{ old('estimated_duration') }}'><br>
-
+        <input type='text' id='estimated_duration' name='estimated_duration' value='{{ old('estimated_duration') }}'>
+        @if ($errors->get('estimated_duration'))
+            <div class='error'>{{ $errors->first('estimated_duration') }}</div>
+        @endif
+        <br>
         <label for='start_date'>* Start Date:</label>
-        <input type='date' id='start_date' name='start_date' value='{{ old('start_date') }}'><br>
-
+        <input type='date' id='start_date' name='start_date' value='{{ old('start_date') }}'>
+        @if ($errors->get('start_date'))
+            <div class='error'>{{ $errors->first('start_date') }}</div>
+        @endif
+        <br>
         <label for='end_date'>* End Date:</label>
-        <input type='date' id='end_date' name='end_date' value='{{ old('end_date') }}'><br>
+        <input type='date' id='end_date' name='end_date' value='{{ old('end_date') }}'>
+        @if ($errors->get('end_date'))
+            <div class='error'>{{ $errors->first('end_date') }}</div>
+        @endif
+        <br>
 
         <button type='submit'>Submit</button>
     </form>
