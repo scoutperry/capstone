@@ -32,7 +32,7 @@ Route::get('/example', function () {
         'author' => 'F. Scott Fitzgerald',
     ]);
 });
-# Make sure the create route comes before the `/books/{slug}` route so it takes precedence
+# Make sure the create route comes before the `/projects/{slug}` route so it takes precedence
 Route::get('/projects/create', [ProjectController::class, 'create']);
 
 # All Projects
@@ -53,7 +53,7 @@ Route::get('/practice', [PracticeController::class, 'practiceX']);
 
 /*
 Route::get('/filter/{category}/{subcategory}', function($x, $y) {
-    return 'Here are all the books in the category ' . $x . ' and ' . $y;
+    return 'Here are all the projects in the category ' . $x . ' and ' . $y;
 }); 
 */
 

@@ -19,7 +19,7 @@
             <li><a href='/'>Home</a></li>
             <li><a href='/projects'>Projects</a></li>
             <li><a href='/projects/create'>Create</a></li>
-            <li><a href='/projects/show'>View</a></li>
+            <li><a href='/projects'>View</a></li>
             <li><a href='/projects/edit'>Edit</a></li>
             <li><a href='/directory'>Directory</a></li>
             <li><a href='/account'>Account</a></li>
