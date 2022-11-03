@@ -28,23 +28,23 @@ this .css file does not exist yet, but we can create it
         <label for='staff_last'>Last name:</label>
         <input type='text' name='staff_last' id='staff_last'><br>
 
-        <label for='dept'>Your department:</label>
-        <input type='text' name='dept' id='dept'><br>
+        <label for='department'>Your department:</label>
+        <input type='text' name='department' id='department'><br>
 
         <label for='location'>Location Project takes place:</label>
         <input type='text' name='location' id='location'><br>
 
-        <label for='addl_staff'>Additional staff needed:</label>
-        <input type='text' name='addl_staff' id='addl_staff'><br>
+        <label for='additional_staff'>Additional staff needed:</label>
+        <input type='text' name='additional_staff' id='additional_staff'><br>
 
         <label for='estimated_cost'>Estimated Cost of Project:</label>
         <input type="number" id="estimated_cost" name="estimated_cost"><br>
 
-        <label for='addl_equip'>Additional equipment needed:</label>
-        <input type='text' name='addl_equip' id='addl_equip'><br>
+        <label for='additional_equip'>Additional equipment needed:</label>
+        <input type='text' name='additional_equip' id='additional_equip'><br>
 
-        <label for='addl_services'> Additional services needed:</label>
-        <input type='text' name='addl_services' id='addl_services'><br>
+        <label for='additional_services'> Additional services needed:</label>
+        <input type='text' name='additional_services' id='additional_services'><br>
 
         <label for='summary'> Summary of project:</label>
         <input type='text' name='summary' id='summary'><br>
@@ -55,8 +55,8 @@ this .css file does not exist yet, but we can create it
         <label for='depends_on'> Check if project is dependent on another proposed project:</label>
         <input type="checkbox" id="depends_on" name="depends_on" value="depends_on"><br>
 
-        <label for="est_duration">Estimated Duration of project:</label>
-        <input type="text" id="est_duration" name="est_duration"><br>
+        <label for="estimated_duration">Estimated Duration of project:</label>
+        <input type="text" id="estimated_duration" name="estimated_duration"><br>
 
         <label for="start_date">Start Date:</label>
         <input type="date" id="start_date" name="start_date"><br>
