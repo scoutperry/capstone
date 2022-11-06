@@ -1,7 +1,7 @@
 @extends('layouts/main')
 
 @section('title')
-    {{ $title }}
+    {{ $project ? $project['title'] : 'project not found' }}
 @endsection
 
 @section('head')
@@ -13,7 +13,7 @@ this .css file does not exist yet, but we can create it
 @endsection
 
 @section('content')
-    <h1>{{ $title }}</h1>
+    <h1>{{ $project['title'] }}</h1>
 
     <p>
         Details about this project will go here...

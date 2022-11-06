@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Project;
 use Illuminate\Support\Str;
+use App\Models\Project;
 
 
 class ProjectController extends Controller
@@ -58,8 +58,6 @@ class ProjectController extends Controller
             'estimated_duration' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
-
-
         ]);
 
  # Note: If validation fails, it will automatically redirect the visitor back to the form page
@@ -86,30 +84,22 @@ class ProjectController extends Controller
         $project->estimated_duration = $request->estimated_duration;
         $project->start_date = $request->start_date;
         $project->end_date = $request->end_date;
-
         # Invoke the Eloquent `save` method to generate a new row in the
         # `books` table, with the above data
         $project->save();
 
         # Confirm results
-        dump('Added: ' . $project->title);
-        dump(Project::all()->toArray());
+        //dump('Added: ' . $project->title);
+        //dump(Project::all()->toArray());
         
         //return redirect('/projects/create')->with(['flash-alert' => 'Your project was added!']);
         
     }
 
 
-    public function show($title)
+    public function show(Request $request, $slug)
     {
-
-        return view('projects/show', [
-        'title' => $title
-        ]); 
         
-        /*
-        # TODO define 'findBySlug
-
         $project = Project::findBySlug($slug);
         if (!$project) {
 
@@ -121,7 +111,7 @@ class ProjectController extends Controller
             'project' => $project,
             //'onList' => $onList
 
-        ]);*/
+        ]);
     }
 
 }
