@@ -56,7 +56,8 @@ class ProjectController extends Controller
 
     public function store(Request $request) 
     {
-        
+       $slug = str_replace(" ","-",(strtolower($request->title)));
+
        # Validate the request data
        # The `$request->validate` method takes an array of data 
        # where the keys are form inputs
@@ -89,9 +90,11 @@ class ProjectController extends Controller
  # Note: If validation fails, it will automatically redirect the visitor back to the form page
  # and none of the code that follows will execute.
 
-        # Code will eventually go here to add the project to the database, 
+ # Code will eventually go here to add the project to the database, 
         # but for now we'll just dump the form data to the page for proof of concept
         dump($request->all());
+        dump($slug);
+
 
         /*
         $project->title = $request->title;

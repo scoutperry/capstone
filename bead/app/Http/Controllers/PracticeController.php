@@ -75,7 +75,12 @@ class PracticeController extends Controller
         $result = Project::orderBy('staff_last')->orderBy('title', 'desc')->get();
         dump($result->toArray());
     }
-
+    public function practice9()
+    {
+        # `orderBy` constraints can be chained to order by multiple rows
+        $result = str_replace(" ","-",(strtolower("Red Beans and Rice")));
+        dump($result);
+    }
 
 /*
 

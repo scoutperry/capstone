@@ -47,7 +47,7 @@ Route::post('/projects', [ProjectController::class, 'store']);
 Route::get('/rubric', function () {
     return 'Here is your current rubric...';
 });
-Route::get('/practice', [PracticeController::class, 'practiceX']);
+Route::get('/practice', [PracticeController::class, 'practice9']);
 
 
 
