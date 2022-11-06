@@ -32,17 +32,18 @@ Route::get('/example', function () {
         'author' => 'F. Scott Fitzgerald',
     ]);
 });
-# Make sure the create route comes before the `/projects/{slug}` route so it takes precedence
-Route::get('/projects/create', [ProjectController::class, 'create']);
 
 # All Projects
 Route::get('/projects', [ProjectController::class, 'index']);
 
-# Individual Project
-Route::get('/projects/{title}', [ProjectController::class, 'show']);
+# Make sure the create route comes before the `/projects/{slug}` route so it takes precedence
+Route::get('/projects/create', [ProjectController::class, 'create']);
 
 # Note the use of the post method in this route
 Route::post('/projects', [ProjectController::class, 'store']);
+
+# Individual Project
+Route::get('/projects/{title}', [ProjectController::class, 'show']);
 
 Route::get('/rubric', function () {
     return 'Here is your current rubric...';

@@ -21,30 +21,6 @@ class ProjectController extends Controller
         //return 'Here are all of the projects...';
     }
 
-
-    public function show($title)
-    {
-
-        return view('projects/show', [
-        'title' => $title
-        ]); 
-        
-        /*
-        # TODO define 'findBySlug
-
-        $project = Project::findBySlug($slug);
-        if (!$project) {
-
-            return redirect('/projects')->with(['flash-alert' => 'Project not found.']);
-        }
-        //$onList = $Project->users()->where('user_id', $request->user()->id)->count() >= 1;
-        else
-        return view('projects/show', [
-            'project' => $project,
-            //'onList' => $onList
-
-        ]);*/
-    }
 /**
 * GET /projects/create
 * Display the form to add a new project
@@ -56,7 +32,6 @@ class ProjectController extends Controller
 
     public function store(Request $request) 
     {
-       $slug = str_replace(" ","-",(strtolower($request->title)));
 
        # Validate the request data
        # The `$request->validate` method takes an array of data 
@@ -90,15 +65,13 @@ class ProjectController extends Controller
  # Note: If validation fails, it will automatically redirect the visitor back to the form page
  # and none of the code that follows will execute.
 
- # Code will eventually go here to add the project to the database, 
-        # but for now we'll just dump the form data to the page for proof of concept
-        dump($request->all());
-        dump($slug);
+        //$slug = str_replace(" ","-",(strtolower($request->title)));
 
-
-        /*
+        # Instantiate a new Book Model object
+        $project = new Project();
+        
+        $project->slug = str_replace(" ","-",(strtolower($request->title)));
         $project->title = $request->title;
-        $project->slug = $request->slug;
         $project->staff_first = $request->staff_first;
         $project->staff_last = $request->staff_last;
         $project->department = $request->department;
@@ -114,16 +87,41 @@ class ProjectController extends Controller
         $project->start_date = $request->start_date;
         $project->end_date = $request->end_date;
 
+        # Invoke the Eloquent `save` method to generate a new row in the
+        # `books` table, with the above data
         $project->save();
 
-        return redirect('/projects/create')->with(['flash-alert' => 'Your project was added!']);
-        */
+        # Confirm results
+        dump('Added: ' . $project->title);
+        dump(Project::all()->toArray());
+        
+        //return redirect('/projects/create')->with(['flash-alert' => 'Your project was added!']);
+        
+    }
 
 
+    public function show($title)
+    {
 
+        return view('projects/show', [
+        'title' => $title
+        ]); 
+        
+        /*
+        # TODO define 'findBySlug
 
+        $project = Project::findBySlug($slug);
+        if (!$project) {
 
+            return redirect('/projects')->with(['flash-alert' => 'Project not found.']);
+        }
+        //$onList = $Project->users()->where('user_id', $request->user()->id)->count() >= 1;
+        else
+        return view('projects/show', [
+            'project' => $project,
+            //'onList' => $onList
 
+        ]);*/
     }
 
 }
