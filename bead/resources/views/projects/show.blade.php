@@ -16,6 +16,19 @@ this .css file does not exist yet, but we can create it
     <h1>{{ $project['title'] }}</h1>
 
     <p>
-        Details about this project will go here...
+        {{ $project['staff_first'] }}<br>
+        {{ $project['staff_last'] }}<br>
+        {{ $project['department'] }}<br>
+        {{ $project['location'] }}<br>
+        {{ $project['additional_staff'] }}<br>
+        {{ $project['estimated_cost'] }}<br>
+        {{ $project['additional_equip'] }}<br>
+        {{ $project['additional_services'] }}<br>
+        {{ $project['summary'] }}<br>
+        {{ $project['has_dependent'] }}<br>
+        {{ $project['depends_on'] }}<br>
+        {{ $project['estimated_duration'] }}<br>
+        {{ $project['start_date'] }}<br>
+        {{ $project['end_date'] }}<br>
     </p>
 @endsection
