@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use Illuminate\Support\Str;
-use App\Models\Project; # Make our Book Model accessible
+use App\Models\Project; # Make our Project Model accessible
 use Faker\Factory; # We’ll use this library to generate random/fake data
 
 class ProjectsTableSeeder extends Seeder
@@ -39,7 +39,6 @@ class ProjectsTableSeeder extends Seeder
      */
     private function addOneProject()
     {
-
         //fix the variables
         $project = new project();
         $project->created_at = $this->faker->dateTime();
