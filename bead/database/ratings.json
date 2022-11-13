@@ -1,0 +1,382 @@
+{
+    "existing_donor": {
+        "measure": "This project can be funded from existing donors",
+        "active": 1,
+        "department_id": 1
+    },
+    "donor_area": {
+        "measure": "This project will not require building a whole new donor area (i.e.: archeology, contemporary etc.)",
+        "active": 1,
+        "department_id": 1
+    },
+    "foundation_timing": {
+        "measure": "This project will either not require funding from Foundations or fits the timing for a particular foundation",
+        "active": 1,
+        "department_id": 1
+    },
+    "strategic": {
+        "measure": "This project has a strong connection to the Strategic Plan",
+        "active": 1,
+        "department_id": 1
+    },
+    "campus_plan": {
+        "measure": "This project has an existing place on the Campus Master Plan",
+        "active": 1,
+        "department_id": 1
+    },
+    "campaign_priority": {
+        "measure": "This project is included in the Campaign priorities",
+        "active": 1,
+        "department_id": 1
+    },
+    "program_impact": {
+        "measure": "This project does not negatively impact programming (closes galleries etc., reduces capacity, impacts people movement etc.)",
+        "active": 1,
+        "department_id": 1
+    },
+    "legal_obligation": {
+        "measure": "This project satisfies an existing legal obligation",
+        "active": 1,
+        "department_id": 1
+    },
+    "fund_obligation": {
+        "measure": "This project satisfies an existing funding based obligation",
+        "active": 1,
+        "department_id": 1
+    },
+    "completes_cert": {
+        "measure": "This project satisfies an existing Certification",
+        "active": 1,
+        "department_id": 1
+    },
+    "support": {
+        "measure": "This project generates corporate/foundation/individual support",
+        "active": 1,
+        "department_id": 2
+    },
+    "grant": {
+        "measure": "This project utilizes potential grants",
+        "active": 1,
+        "department_id": 2
+    },
+    "historic_credit": {
+        "measure": "This project is eligible for a historic tax credit",
+        "active": 1,
+        "department_id": 2
+    },
+    "visitation": {
+        "measure": "This project increases overall visitation (Incremental admissions revenue)",
+        "active": 1,
+        "department_id": 2
+    },
+    "audience_expansion": {
+        "measure": "This project generates audience expansion",
+        "active": 1,
+        "department_id": 2
+    },
+    "special_ticket": {
+        "measure": "This project supports special ticket sales",
+        "active": 1,
+        "department_id": 2
+    },
+    "other_potential": {
+        "measure": "This project supports special ticket sales",
+        "active": 1,
+        "department_id": 2
+    },
+    "deai_staff": {
+        "measure": "This project requires additional DEAI staff",
+        "active": 1,
+        "department_id": 3
+    },
+    "interpretation": {
+        "measure": "This project includes bilingual interpretation",
+        "active": 1,
+        "department_id": 3
+    },
+    "includes_race": {
+        "measure": "This project includes people from underrepresented races and/or ethnicities",
+        "active": 1,
+        "department_id": 3
+    },
+    "includes_gender": {
+        "measure": "This project includes people with underrepresented gender identities",
+        "active": 1,
+        "department_id": 3
+    },
+    "includes_sexuality": {
+        "measure": "This project includes people with underrepresented sexual identities",
+        "active": 1,
+        "department_id": 3
+    },
+    "includes_physical": {
+        "measure": "This project includes people with physical disabilities",
+        "active": 1,
+        "department_id": 3
+    },
+    "includes_psychiatic": {
+        "measure": "This project includes people with psychiatric disabilities",
+        "active": 1,
+        "department_id": 3
+    },
+    "primary_representation": {
+        "measure": "This project includes primary interpretation (i.e., curator, content contributor) from one or more of the groups described above",
+        "active": 1,
+        "department_id": 3
+    },
+    "secondary_representation": {
+        "measure": "This project includes secondary interpretation (i.e., sources consulted) from one or more of the groups described above",
+        "active": 1,
+        "department_id": 3
+    },
+    "diverse_audience": {
+        "measure": "This project markets to one or more of the groups described above",
+        "active": 1,
+        "department_id": 3
+    },
+    "diverse_support": {
+        "measure": "This project seeks financial support from one or more of the groups described above",
+        "active": 1,
+        "department_id": 3
+    },
+    "diverse_vendor": {
+        "measure": "This project utilizes vendors from one or more of the groups described above",
+        "active": 1,
+        "department_id": 3
+    },
+    "curatorial_staff": {
+        "measure": "This project will not require additional staff",
+        "active": 1,
+        "department_id": 4
+    },
+    "tech": {
+        "measure": "This project will not require enhanced technology or upgrades to WAM’s technological infrastructure",
+        "active": 1,
+        "department_id": 4
+    },
+    "community": {
+        "measure": "This project offers opportunity to collaborate with community partners",
+        "active": 1,
+        "department_id": 4
+    },
+    "academic": {
+        "measure": "This project offers opportunity to collaborate with academic partners",
+        "active": 1,
+        "department_id": 4
+    },
+    "permanent_collection": {
+        "measure": "This project offers a longstanding installation for permanent collection objects",
+        "active": 1,
+        "department_id": 4
+    },
+    "new_donors": {
+        "measure": "This project creates opportunity to build relationships with new donors and collectors",
+        "active": 1,
+        "department_id": 4
+    },
+    "visitor_experience": {
+        "measure": "This project improves the overall visitor experience",
+        "active": 1,
+        "department_id": 4
+    },
+    "collection_strength": {
+        "measure": "This project improves the visibility and accessibility of a particular area of strength within WAM’s collection",
+        "active": 1,
+        "department_id": 4
+    },
+    "storage_turnover": {
+        "measure": "This project provides opportunity to bring objects out of storage",
+        "active": 1,
+        "department_id": 4
+    },
+    "conservation_opportunity": {
+        "measure": "This project provides opportunity for objects to receive conservation treatment",
+        "active": 1,
+        "department_id": 4
+    },
+    "interpretive_update": {
+        "measure": "This project provides opportunity to update interpretive content",
+        "active": 1,
+        "department_id": 4
+    },
+    "enhance_display": {
+        "measure": "This project provides opportunity to enhance the display of objects in a gallery (safety, aesthetic)",
+        "active": 1,
+        "department_id": 4
+    },
+    "steward": {
+        "measure": "This project provides opportunity to better steward WAM’s collection",
+        "active": 1,
+        "department_id": 4
+    },
+    "code_law_regulation": {
+        "measure": "This project satisfies a requirement outlined by code, law, or regulation",
+        "active": 1,
+        "department_id": 5
+    },
+    "art_environment": {
+        "measure": "This project will provide an opportunity to improve environmental systems where art is housed",
+        "active": 1,
+        "department_id": 5
+    },
+    "cooling_heating_art": {
+        "measure": "This project will provide an opportunity for repairs to the envelop, cooling and heating systems where art is affected",
+        "active": 1,
+        "department_id": 5
+    },
+    "cooling_heating_nonart": {
+        "measure": "This project will provide an opportunity for repairs to the envelop, cooling and heating systems where art is not affected",
+        "active": 1,
+        "department_id": 5
+    },
+    "service_improvement": {
+        "measure": "This project will improve customer service",
+        "active": 1,
+        "department_id": 5
+    },
+    "efficiant_process": {
+        "measure": "This project will improve efficiency of work processes",
+        "active": 1,
+        "department_id": 5
+    },
+    "public_aesthetics": {
+        "measure": "This project will improve aesthetics of public areas",
+        "active": 1,
+        "department_id": 5
+    },
+    "nonpublic_aesthetics": {
+        "measure": "This project will improve aesthetics of nonpublic areas",
+        "active": 1,
+        "department_id": 5
+    },
+    "education_staff": {
+        "measure": "This project does not require additional Ed/Exp staff and volunteers",
+        "active": 1,
+        "department_id": 6
+    },
+    "visitation": {
+        "measure": "This project expands visitation",
+        "active": 1,
+        "department_id": 6
+    },
+    "program_enhancement": {
+        "measure": "This project enhances events, programs, and classes ",
+        "active": 1,
+        "department_id": 6
+    },
+    "curricular_connection": {
+        "measure": "This project increases curricular connections for K-12 schools and colleges ",
+        "active": 1,
+        "department_id": 6
+    },
+    "programming_space": {
+        "measure": "This project increases programming space ",
+        "active": 1,
+        "department_id": 6
+    },
+    "augmentation": {
+        "measure": "This project augments in-gallery interpretation",
+        "active": 1,
+        "department_id": 6
+    },
+    "families": {
+        "measure": "This project encourages family engagement ",
+        "active": 1,
+        "department_id": 6
+    },
+    "accessible": {
+        "measure": "This project improves physical and interpretive accessibility",
+        "active": 1,
+        "department_id": 6
+    },
+    "wayfinding": {
+        "measure": "This project eases wayfinding ",
+        "active": 1,
+        "department_id": 6
+    },
+    "view_variety": {
+        "measure": "This project broadens variety and number of objects on view",
+        "active": 1,
+        "department_id": 6
+    },
+    "existing_community": {
+        "measure": "This project strengthens existing community relationships",
+        "active": 1,
+        "department_id": 6
+    },
+    "new_community": {
+        "measure": "This project creates new community partnerships",
+        "active": 1,
+        "department_id": 6
+    },
+    "education_market": {
+        "measure": "This project fits well into Education marketing channels",
+        "active": 1,
+        "department_id": 6
+    },
+    "deai_initiatives": {
+        "measure": "This project supports DEAI initiatives",
+        "active": 1,
+        "department_id": 6
+    },
+    "storage_capacity": {
+        "measure": "This project will positively impact storage capacity",
+        "active": 1,
+        "department_id": 7
+    },
+    "collections_access": {
+        "measure": "This project will positively impact access to collections in storage",
+        "active": 1,
+        "department_id": 7
+    },
+    "site_storage": {
+        "measure": "This project will not require additional off-site storage",
+        "active": 1,
+        "department_id": 7
+    },
+    "swing_space": {
+        "measure": "This project will not require closure of galleries for swing space/storage of displaced material;",
+        "active": 1,
+        "department_id": 7
+    },
+    "add_storage": {
+        "measure": "This project will free up/ give additional storage space",
+        "active": 1,
+        "department_id": 7
+    },
+    "positive_impact": {
+        "measure": "This project will positively impact collection management",
+        "active": 1,
+        "department_id": 7
+    },
+    "inventory": {
+        "measure": "This project will enable an inventory to take place, improve object records, produce new photography for security, or enable checking",
+        "active": 1,
+        "department_id": 7
+    },
+    "av_staff": {
+        "measure": "This project will not require additional staff due to addition of interactives in the galleries (AV, IT, Additional Preparators)",
+        "active": 1,
+        "department_id": 7
+    },
+    "current_collection": {
+        "measure": "The current collection can support the project or subsequent programming",
+        "active": 1,
+        "department_id": 7
+    },
+    "loan_embargo": {
+        "measure": "This project will not require an embargo on outgoing or incoming loans",
+        "active": 1,
+        "department_id": 7
+    },
+    "acquisitions_embargo": {
+        "measure": "This project will not require an embargo on acquisitions",
+        "active": 1,
+        "department_id": 7
+    },
+    "resource_conflict": {
+        "measure": "TThis project will not cause a conflict of resources (staff, galleries, storage, other sorts of locations)",
+        "active": 1,
+        "department_id": 7
+    }
+}
