@@ -18,7 +18,7 @@ return new class extends Migration
 
             # Add a new bigint field called `department_id ` 
             # has to be unsigned (i.e. positive)
-            # nullable so it's possible to have a book without an author
+            # nullable so it's possible to have a rating without a department
             $table->bigInteger('department_id')->unsigned()->nullable();
     
             # This field `department_id ` is a foreign key that connects to the `id` field in the `departments` table
