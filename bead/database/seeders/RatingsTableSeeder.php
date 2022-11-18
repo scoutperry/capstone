@@ -38,7 +38,7 @@ class RatingsTableSeeder extends Seeder
             $rating->created_at = $this->faker->dateTimeThisMonth();
             $rating->updated_at = $rating->created_at;
             $rating->measure = $ratingData['measure'];
-            $rating->variable = $slug;
+            $rating->handle = $slug;
             $rating->active = $ratingData['active'];
             $rating->department_id = $ratingData['department_id'];
 

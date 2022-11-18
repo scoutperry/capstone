@@ -28,7 +28,8 @@ return new class extends Migration
         $table->foreign('rating_id')->references('id')->on('ratings');
 
         # (Optional) Add additional columns for data you want to associate with this relationship
-        $table->tinyinteger('grade')->unsigned()->nullable();
+        //$table->tinyInteger('grade')->unsigned()->nullable();
+        $table->tinyInteger('grade')->unsigned()->nullable();
         });
     }
 

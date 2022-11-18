@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('measure');
-            $table->string('variable');
+            $table->string('handle');
             $table->tinyinteger('active');
         });
     }

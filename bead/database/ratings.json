@@ -14,7 +14,7 @@
         "active": 1,
         "department_id": 1
     },
-    "strategic": {
+    "strategic_plan": {
         "measure": "This project has a strong connection to the Strategic Plan",
         "active": 1,
         "department_id": 1
@@ -64,7 +64,7 @@
         "active": 1,
         "department_id": 2
     },
-    "visitation": {
+    "visitation_revenue": {
         "measure": "This project increases overall visitation (Incremental admissions revenue)",
         "active": 1,
         "department_id": 2
@@ -114,7 +114,7 @@
         "active": 1,
         "department_id": 3
     },
-    "includes_psychiatic": {
+    "includes_psychiatric": {
         "measure": "This project includes people with psychiatric disabilities",
         "active": 1,
         "department_id": 3
@@ -219,12 +219,12 @@
         "active": 1,
         "department_id": 5
     },
-    "cooling_heating_art": {
+    "hvac_art": {
         "measure": "This project will provide an opportunity for repairs to the envelop, cooling and heating systems where art is affected",
         "active": 1,
         "department_id": 5
     },
-    "cooling_heating_nonart": {
+    "hvac_nonart": {
         "measure": "This project will provide an opportunity for repairs to the envelop, cooling and heating systems where art is not affected",
         "active": 1,
         "department_id": 5
@@ -234,7 +234,7 @@
         "active": 1,
         "department_id": 5
     },
-    "efficiant_process": {
+    "efficient_process": {
         "measure": "This project will improve efficiency of work processes",
         "active": 1,
         "department_id": 5
@@ -289,8 +289,8 @@
         "active": 1,
         "department_id": 6
     },
-    "wayfinding": {
-        "measure": "This project eases wayfinding ",
+    "way_finding": {
+        "measure": "This project eases way-finding ",
         "active": 1,
         "department_id": 6
     },
@@ -375,7 +375,7 @@
         "department_id": 7
     },
     "resource_conflict": {
-        "measure": "TThis project will not cause a conflict of resources (staff, galleries, storage, other sorts of locations)",
+        "measure": "This project will not cause a conflict of resources (staff, galleries, storage, other sorts of locations)",
         "active": 1,
         "department_id": 7
     }

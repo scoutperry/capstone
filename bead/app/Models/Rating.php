@@ -11,7 +11,7 @@ class Rating extends Model
 
     public function department()
     {
-        # Book belongs to Department
+        # Rating belongs to Department
         # Define an inverse one-to-many relationship.
         return $this->belongsTo('App\Models\Department');
     }
@@ -19,7 +19,7 @@ class Rating extends Model
     public function projects()
 {
     return $this->belongsToMany('App\Models\Project')
-        ->withTimestamps() # Must be added to have Eloquent update the created_at/updated_at columns in a pibot table
+        ->withTimestamps() # Must be added to have Eloquent update the created_at/updated_at columns in a pivot table
         ->withPivot('grade'); # Must also specify any other fields that should be included when fetching this relationship
 }
 }
