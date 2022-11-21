@@ -13,20 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('ratings', function (Blueprint $table) {
+        Schema::table('projects', function (Blueprint $table) {
 
-            # Remove the field associated with the old way we were storing authors
-            # Can do this here, or update the original migration that creates the `books` table
-            # $table->dropColumn('author');
+            # Remove the field associated with the old way we were storing departments
+            # Can do this here, or update the original migration that creates the `projects` table
+            $table->dropColumn('department');
 
-            # Add a new bigint field called `department_id ` 
+            # Add a new bigint field called `department_id` 
             # has to be unsigned (i.e. positive)
             # nullable so it's possible to have a rating without a department
             $table->bigInteger('department_id')->unsigned()->nullable();
-    
-            # This field `department_id ` is a foreign key that connects to the `id` field in the `departments` table
+
+            # This field `department_id` is a foreign key that connects to the `id` field in the `departments` table
             $table->foreign('department_id')->references('id')->on('departments');
+
         });
+
     }
 
     /**
@@ -36,7 +38,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('ratings', function (Blueprint $table) {
+        Schema::table('projects', function (Blueprint $table) {
 
             # ref: http://laravel.com/docs/migrations#dropping-indexes
             # combine tablename + fk field name + the word "foreign"
@@ -44,6 +46,5 @@ return new class extends Migration
     
             $table->dropColumn('department_id');
         });
-    
     }
 };

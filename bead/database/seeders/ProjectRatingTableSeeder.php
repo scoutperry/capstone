@@ -23,7 +23,7 @@ class ProjectRatingTableSeeder extends Seeder
     $ratings = [
          'existing_donor',
          'donor_area',
-         'foundation_timing'/*,
+         'foundation_timing',
          'strategic_plan',
          'campus_plan',
          'campaign_priority',
@@ -65,8 +65,8 @@ class ProjectRatingTableSeeder extends Seeder
          'steward',
          'code_law_regulation',
          'art_environment',
-         'cooling_heating_art',
-         'cooling_heating_nonart',
+         'hvac_art',
+         'hvac_nonart',
          'service_improvement',
          'efficient_process',
          'public_aesthetics',
@@ -96,13 +96,13 @@ class ProjectRatingTableSeeder extends Seeder
          'current_collection',
          'loan_embargo',
          'acquisitions_embargo',
-         'resource_conflict'*/
-    ];
+         'resource_conflict'
+     ];
 
     foreach ($ratings as $handle) {
          $rating = Rating::where('handle', '=', $handle)->first();
-         $project->ratings()->save($project, ['grade' => rand(1,5)]);
-    }
+         $project->ratings()->save($rating, ['grade' => rand(1,5)]);
+          }
 
     }
 }

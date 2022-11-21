@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use Illuminate\Support\Str;
+use App\Models\Department; # Make our Project Model accessible
 use App\Models\Project; # Make our Project Model accessible
 use Faker\Factory; # We’ll use this library to generate random/fake data
 
@@ -63,15 +64,21 @@ class ProjectsTableSeeder extends Seeder
         $projects = json_decode($projectData, true);
 
         foreach ($projects as $slug => $projectData) {
-            $project = new Project();
 
+            # Extract just the last name from the book data...
+            # F. Scott Fitzgerald => ['F.', 'Scott', 'Fitzgerald'] => 'Fitzgerald'
+            $name = $projectData['department'];
+            # Find that author in the authors table
+            $department_id = Department::where('name', '=', $name)->pluck('id')->first();
+
+            $project = new Project();
             $project->created_at = $this->faker->dateTimeThisMonth();
             $project->updated_at = $project->created_at;
             $project->slug = $slug;
             $project->title = $projectData['title'];
             $project->staff_first = $projectData['staff_first'];
             $project->staff_last = $projectData['staff_last'];
-            $project->department = $projectData['department'];
+            $project->department_id = $department_id;
             $project->location = $projectData['location'];
             $project->additional_staff = $projectData['additional_staff'];
             $project->estimated_cost = $projectData['estimated_cost'];
