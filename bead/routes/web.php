@@ -48,7 +48,7 @@ Route::get('/projects/{title}', [ProjectController::class, 'show']);
 Route::get('/rubric', function () {
     return 'Here is your current rubric...';
 });
-Route::get('/practice', [PracticeController::class, 'practice10']);
+Route::get('/practice', [PracticeController::class, 'practice11']);
 
 
 

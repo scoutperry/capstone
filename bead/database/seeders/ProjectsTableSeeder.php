@@ -32,8 +32,8 @@ class ProjectsTableSeeder extends Seeder
 
                 # Three different examples of how to add books
                 //$this->addOneBook();
-                $this->addAllProjectsFromProjectsDotJsonFile();
-                //$this->addRandomlyGeneratedBooksUsingFaker();
+                //$this->addAllProjectsFromProjectsDotJsonFile();
+                $this->addRandomlyGeneratedProjectsUsingFaker();
     }
         /**
      *
@@ -99,13 +99,12 @@ class ProjectsTableSeeder extends Seeder
     /**
      *
      */
-    private function addRandomlyGeneratedprojectsUsingFaker()
+    private function addRandomlyGeneratedProjectsUsingFaker()
     {
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 25; $i++) {
             $project = new project();
             
-            $title = $this->faker->words(rand(3, 6), true);
-            $project->created_at =  $this->faker->dateTimeThisMonth();
+            /*$project->created_at =  $this->faker->dateTimeThisMonth();
             $project->updated_at =  $project->created_at;
             $project->title = Str::title($title);
             $project->slug = Str::slug($title, '-');
@@ -114,7 +113,27 @@ class ProjectsTableSeeder extends Seeder
             $project->cover_url = 'https://hes-projectmark.s3.amazonaws.com/cover-placeholder.png';
             $project->info_url = 'https://en.wikipedia.org/wiki/' . $project->slug;
             $project->purchase_url = 'https://www.barnesandnoble.com/' . $project->slug;
-            $project->description = $this->faker->paragraphs(1, true);
+            $project->description = $this->faker->paragraphs(1, true);*/
+
+            $title = $this->faker->words(rand(3, 6), true);
+            $project->created_at = $this->faker->dateTimeThisMonth();
+            $project->updated_at = $project->created_at;
+            $project->slug = Str::slug($title, '-');
+            $project->title = Str::title($title);
+            $project->staff_first = $this->faker->firstName;
+            $project->staff_last = $this->faker->lastName;
+            $project->department_id = rand(1, 7);
+            $project->location = rand(100, 399);
+            $project->additional_staff = $this->faker->words(rand(3, 6), true);
+            $project->estimated_cost = rand(300000, 2147483647);
+            $project->additional_equip = $this->faker->words(rand(3, 6), true);
+            $project->additional_services = $this->faker->words(rand(3, 6), true);
+            $project->summary = $this->faker->words(rand(15, 75), true);
+            $project->has_dependent = rand(0, 1);
+            $project->depends_on = rand(0, 1);
+            $project->estimated_duration = $this->faker->words(rand(3, 6), true);
+            $project->start_date = $this->faker->dateTimeThisDecade('+2 years');
+            $project->end_date = $this->faker->dateTimeThisDecade('+4 years');
 
             $project->save();
         }

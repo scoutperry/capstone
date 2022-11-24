@@ -44,11 +44,29 @@ this .css file does not exist yet, but we can create it
         @endif
         <br>
 
-        <label for='department'>* Your department:</label>
+        {{-- <label for='department'>* Your department:</label>
         <input type='text' name='department' id='department' value='{{ old('department') }}'>
         @if ($errors->get('department'))
             <div class='error'>{{ $errors->first('department') }}</div>
-        @endif
+        @endif --}}
+
+        <label for='department'>* Your department:</label>
+        <select id='department' name='department' value='{{ old('department') }}'>
+            <option value='Development'> Development </option>
+            <option value='Finance'>Finance</option>
+            <option value='DEAI'>DEAI</option>
+            <option value='Curatorial'>Curatorial</option>
+            <option value='Facilites'> Facilites </option>
+            <option value='Education'>Education</option>
+            <option value='Collections'>Collections</option>
+        </select>
+
+        {{-- @if ($errors->get('department'))
+            <div class='error'>{{ $errors->first('department') }}</div>
+        @endif --}}
+
+
+
         <br>
 
         <label for='location'>* Location Project takes place:</label>

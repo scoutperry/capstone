@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Rating;
+use App\Models\Department;
+
+use Faker\Factory; # library to generate random/fake data
+
 
 class PracticeController extends Controller
 {
@@ -85,186 +89,211 @@ class PracticeController extends Controller
 
     public function practice10()
     {
-        $project = Project::where('slug', '=', 'love-stories-from-the-national-portrait-gallery-london')->first();
 
-        $ratings = [
-            'existing_donor',
-            'donor_area',
-            'foundation_timing',
-            'strategic_plan',
-            'campus_plan',
-            'campaign_priority',
-            'program_impact',
-            'legal_obligation',
-            'fund_obligation',
-            'completes_cert',
-            'support',
-            'grant',
-            'historic_credit',
-            'visitation_revenue',
-            'audience_expansion',
-            'special_ticket',
-            'other_potential',
-            'deai_staff',
-            'interpretation',
-            'includes_race',
-            'includes_gender',
-            'includes_sexuality',
-            'includes_physical',
-            'includes_psychiatric',
-            'primary_representation',
-            'secondary_representation',
-            'diverse_audience',
-            'diverse_support',
-            'diverse_vendor',
-            'curatorial_staff',
-            'tech',
-            'community',
-            'academic',
-            'permanent_collection',
-            'new_donors',
-            'visitor_experience',
-            'collection_strength',
-            'storage_turnover',
-            'conservation_opportunity',
-            'interpretive_update',
-            'enhance_display',
-            'steward',
-            'code_law_regulation',
-            'art_environment',
-            'cooling_heating_art',
-            'cooling_heating_nonart',
-            'service_improvement',
-            'efficient_process',
-            'public_aesthetics',
-            'nonpublic_aesthetics',
-            'education_staff',
-            'visitation',
-            'program_enhancement',
-            'curricular_connection',
-            'programming_space',
-            'augmentation',
-            'families',
-            'accessible',
-            'way_finding',
-            'view_variety',
-            'existing_community',
-            'new_community',
-            'education_market',
-            'deai_initiatives',
-            'storage_capacity',
-            'collections_access',
-            'site_storage',
-            'swing_space',
-            'add_storage',
-            'positive_impact',
-            'inventory',
-            'av_staff',
-            'current_collection',
-            'loan_embargo',
-            'acquisitions_embargo',
-            'resource_conflict'
-        ];
+        //$result = Project::orderBy('staff_last')->get();
+        //$projects = $result->toArray();
+        //dump($projects);
 
-        foreach ($ratings as $handle) {
-            $rating = Rating::where('handle', '=', $handle)->first();
-            dump($rating);
-            //$project->ratings()->save($rating, ['grade' => rand(1,5)]);
-        }
+
+        //foreach ($projects as $slug) {
+
+
+            $project = Project::where('slug', '=', 'love-stories-from-the-national-portrait-gallery-london')->first();
+            //$project = Project::where('slug', '=', $slug)->first();
+            //dump($project);
+            //$ratings = Rating::orderBy('slug')->value('title');
+
+            $ratings = [
+                'existing_donor',
+                'donor_area',
+                'foundation_timing',
+                'strategic_plan',
+                'campus_plan',
+                'campaign_priority',
+                'program_impact',
+                'legal_obligation',
+                'fund_obligation',
+                'completes_cert',
+                'support',
+                'grant',
+                'historic_credit',
+                'visitation_revenue',
+                'audience_expansion',
+                'special_ticket',
+                'other_potential',
+                'deai_staff',
+                'interpretation',
+                'includes_race',
+                'includes_gender',
+                'includes_sexuality',
+                'includes_physical',
+                'includes_psychiatric',
+                'primary_representation',
+                'secondary_representation',
+                'diverse_audience',
+                'diverse_support',
+                'diverse_vendor',
+                'curatorial_staff',
+                'tech',
+                'community',
+                'academic',
+                'permanent_collection',
+                'new_donors',
+                'visitor_experience',
+                'collection_strength',
+                'storage_turnover',
+                'conservation_opportunity',
+                'interpretive_update',
+                'enhance_display',
+                'steward',
+                'code_law_regulation',
+                'art_environment',
+                'hvac_art',
+                'hvac_nonart',
+                'service_improvement',
+                'efficient_process',
+                'public_aesthetics',
+                'nonpublic_aesthetics',
+                'education_staff',
+                'visitation',
+                'program_enhancement',
+                'curricular_connection',
+                'programming_space',
+                'augmentation',
+                'families',
+                'accessible',
+                'way_finding',
+                'view_variety',
+                'existing_community',
+                'new_community',
+                'education_market',
+                'deai_initiatives',
+                'storage_capacity',
+                'collections_access',
+                'site_storage',
+                'swing_space',
+                'add_storage',
+                'positive_impact',
+                'inventory',
+                'av_staff',
+                'current_collection',
+                'loan_embargo',
+                'acquisitions_embargo',
+                'resource_conflict'
+                ];
+            dump($ratings);
+
+            foreach ($ratings as $handle) {
+                $rating = Rating::where('handle', '=', $handle)->first();
+                //dump($rating);
+                //$project->ratings()->save($rating, ['grade' => rand(1,5)]);
+            }
+        //}
 
     }
 
-
-
+    public function practice11()
+    {
+        //$departments = Department::where('column', 'name')->get();
+        $departments = Department::latest('name')->get();
+    
+        if ($departments->isEmpty()) {
+            dump('No matches found');
+        } else {
+            foreach ($departments as $department) {
+                dump($department->name);
+            }
+        }
+    }
 
 
 /*
 
-    public function practice()
+    public function practice11()
     {
         # Chain two `where` constraints
         $result = Project::where('published', '>', '1960')->where('id', '<', 5 )->get();
         dump($result->toArray());
     }
 
-    public function practice()
+    public function practice12()
     {
         # Chain a `where` and a `orWhere` constraint
         $result = Book::where('published', '>', '1960')->orWhere('id', '<', 5 )->get();
         dump($result->toArray());
     }
 
-    public function practice()
+    public function practice13()
     {
         # `whereIn` constraint
         $result = Book::whereIn('id', [1, 2])->get();
         dump($result->toArray());
     }
 
-    public function practice()
+    public function practice14()
     {
         # Get just the first result of a query by using the `first` fetch method
         $result = Book::where('title', 'LIKE', '%Gatsby%')->orderBy('created_at')->first();
         dump($result);
     }
 
-    public function practice()
+    public function practice15()
     {
         # Throw an exception if the query fails
         $result = Book::where('title', '=', 'The Great Gatsbyyyyy')->firstOrFail();
         dump($result->toArray());
     }
 
-    public function practice()
+    public function practice16()
     {
         # Count how many rows match a `where` constraint using the `count` fetch method
         $result = Book::where('title', 'LIKE', '%Gatsby%')->count();
         dump($result);
     }
 
-    public function practice()
+    public function practice17()
     {
         # Limit the amount of results a query will return
         $result = Book::where('published', '>', 1800)->limit(2)->get();
         dump($result->toArray());
     }
 
-    public function practice()
+    public function practice18()
     {
         # Get a single column's value from the first result of a query
         $result = Book::where('published', '>', 1800)->orderBy('published')->value('title');
         dump($result);
     }
 
-    public function practice()
+    public function practice19()
     {
         # Get a single column's value from the first result of a query
         $result = Book::where('published', '>', 1800)->orderBy('published')->value('title');
         dump($result);
     }
 
-    public function practice()
+    public function practice20()
     {
         # Determine if a row exists using the `exists` fetch method (returns a boolean value)
         $result = Book::where('title', '=', 'The Great Gatsby')->exists();
         dump($result);
     }
 
-    public function practice()
+    public function practice21()
     {
         # Execute a raw SQL select
         $result = Book::raw('SELECT * FROM books WHERE title LIKE %Gatsby%')->get();
         dump($result->toArray());
     }
 
-    public function practice()
+    public function practice22()
     {
         # Delete a row by id
         $result = Book::destroy(1);
         dump($result);
     }
 
-    public function practice()
+    public function practice23()
     {
         # Delete any rows matching a `where` constraint
         $result = Book::where('title', '=', 'The Great Gatsby')->delete();

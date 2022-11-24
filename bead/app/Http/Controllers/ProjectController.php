@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+
 use App\Models\Project;
+use App\Models\Rating;
+use App\Models\Department;
 
 
 class ProjectController extends Controller
@@ -15,10 +18,7 @@ class ProjectController extends Controller
         $projects = Project::orderBy('title', 'ASC')->get();
         
         return view('projects/index', ['projects' => $projects,]);
-        
-        
-        # TODO: Query the database for all the projects;
-        //return 'Here are all of the projects...';
+
     }
 
 /**
@@ -27,11 +27,16 @@ class ProjectController extends Controller
 */
     public function create(Request $request) 
     {
+        #for a departments dropdown
+        //$departments = Department::latest('name')->get();
+
+
         return view('projects/create');
     }
 
     public function store(Request $request) 
     {
+       //dump($request->all());
 
        # Validate the request data
        # The `$request->validate` method takes an array of data 
@@ -39,11 +44,9 @@ class ProjectController extends Controller
        # and the values are validation rules to apply to those inputs
 
        #Review validation for additional values
-
        $request->validate([
 
             'title' => 'required',
-            //'slug' => 'required',
             'staff_first' => 'required',
             'staff_last' => 'required',
             'department' => 'required',
@@ -63,9 +66,7 @@ class ProjectController extends Controller
  # Note: If validation fails, it will automatically redirect the visitor back to the form page
  # and none of the code that follows will execute.
 
-        //$slug = str_replace(" ","-",(strtolower($request->title)));
-
-        # Instantiate a new Book Model object
+        # Instantiate a new Project Model object
         $project = new Project();
         
         $project->slug = str_replace(" ","-",(strtolower($request->title)));
@@ -86,12 +87,13 @@ class ProjectController extends Controller
         $project->end_date = $request->end_date;
         # Invoke the Eloquent `save` method to generate a new row in the
         # `books` table, with the above data
-        $project->save();
+        //$project->save();
 
         # Confirm results
         //dump('Added: ' . $project->title);
         //dump(Project::all()->toArray());
-        
+        dump($project->department);
+
         //return redirect('/projects/create')->with(['flash-alert' => 'Your project was added!']);
         
     }

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('department');
             $table->string('location');
             $table->string('additional_staff')->nullable();
-            $table->Integer('estimated_cost');
+            $table->Integer('estimated_cost')->unsigned();
             $table->string('additional_equip')->nullable();
             $table->string('additional_services')->nullable();
             $table->text('summary');
