@@ -194,16 +194,14 @@ class PracticeController extends Controller
 
     public function practice11()
     {
-        //$departments = Department::where('column', 'name')->get();
-        $departments = Department::latest('name')->get();
-    
-        if ($departments->isEmpty()) {
-            dump('No matches found');
-        } else {
-            foreach ($departments as $department) {
-                dump($department->name);
-            }
+        $department = ['Select',];
+        $deptColl = Department::orderBy('id')->get();
+        
+        $deptArray = ($deptColl->toArray());
+        foreach($deptArray as $value) {
+            $department [] = array_pop($value);
         }
+        dump ($department);
     }
 
 

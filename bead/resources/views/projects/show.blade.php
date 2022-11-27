@@ -18,8 +18,9 @@ this .css file does not exist yet, but we can create it
     <p>
         {{ $project['staff_first'] }}<br>
         {{ $project['staff_last'] }}<br>
-        {{ $project['department'] }}<br>
+        {{ $departmentName }} <br>
         {{ $project['location'] }}<br>
+
         {{ $project['additional_staff'] }}<br>
         {{ $project['estimated_cost'] }}<br>
         {{ $project['additional_equip'] }}<br>

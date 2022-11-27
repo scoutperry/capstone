@@ -28,15 +28,22 @@ class ProjectController extends Controller
     public function create(Request $request) 
     {
         #for a departments dropdown
-        //$departments = Department::latest('name')->get();
+        $departments = ['Select',];
+        $deptColl = Department::orderBy('id')->get();
+        $deptArray = ($deptColl->toArray());
 
+        foreach($deptArray as $value) {
+            $departments [] = array_pop($value);
+        }
 
-        return view('projects/create');
+        return view('projects/create', [
+            'departments' => $departments,
+        ]);
+
     }
 
     public function store(Request $request) 
     {
-       //dump($request->all());
 
        # Validate the request data
        # The `$request->validate` method takes an array of data 
@@ -61,10 +68,19 @@ class ProjectController extends Controller
             'estimated_duration' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
+
         ]);
 
  # Note: If validation fails, it will automatically redirect the visitor back to the form page
  # and none of the code that follows will execute.
+
+ $department_id;
+ $departments = Department::latest('name')->get();
+ foreach ($departments as $department) {
+     if ($department['name'] == $request->department)
+     $department_id = $department['id'];
+
+ }
 
         # Instantiate a new Project Model object
         $project = new Project();
@@ -73,7 +89,7 @@ class ProjectController extends Controller
         $project->title = $request->title;
         $project->staff_first = $request->staff_first;
         $project->staff_last = $request->staff_last;
-        $project->department = $request->department;
+       // $project->department = $request->department;
         $project->location = $request->location;
         $project->additional_staff = $request->additional_staff;
         $project->estimated_cost = $request->estimated_cost;
@@ -85,16 +101,12 @@ class ProjectController extends Controller
         $project->estimated_duration = $request->estimated_duration;
         $project->start_date = $request->start_date;
         $project->end_date = $request->end_date;
+        $project->department_id = $department_id;
         # Invoke the Eloquent `save` method to generate a new row in the
         # `books` table, with the above data
-        //$project->save();
+        $project->save();
 
-        # Confirm results
-        //dump('Added: ' . $project->title);
-        //dump(Project::all()->toArray());
-        dump($project->department);
-
-        //return redirect('/projects/create')->with(['flash-alert' => 'Your project was added!']);
+        return redirect('/projects/create')->with(['flash-alert' => 'Your project was added!']);
         
     }
 
@@ -104,14 +116,17 @@ class ProjectController extends Controller
         
         $project = Project::findBySlug($slug);
         if (!$project) {
-
             return redirect('/projects')->with(['flash-alert' => 'Project not found.']);
         }
-        //$onList = $Project->users()->where('user_id', $request->user()->id)->count() >= 1;
         else
+        $departments = Department::latest('name')->get();
+        foreach ($departments as $department) {
+            if ($department['id'] == $project->department_id)
+            $departmentName = $department['name'];
+            }
         return view('projects/show', [
             'project' => $project,
-            //'onList' => $onList
+            'departmentName' => $departmentName,
 
         ]);
     }

@@ -44,14 +44,9 @@ this .css file does not exist yet, but we can create it
         @endif
         <br>
 
-        {{-- <label for='department'>* Your department:</label>
-        <input type='text' name='department' id='department' value='{{ old('department') }}'>
-        @if ($errors->get('department'))
-            <div class='error'>{{ $errors->first('department') }}</div>
-        @endif --}}
-
         <label for='department'>* Your department:</label>
         <select id='department' name='department' value='{{ old('department') }}'>
+            <option value=null> Select </option>
             <option value='Development'> Development </option>
             <option value='Finance'>Finance</option>
             <option value='DEAI'>DEAI</option>
@@ -61,9 +56,16 @@ this .css file does not exist yet, but we can create it
             <option value='Collections'>Collections</option>
         </select>
 
-        {{-- @if ($errors->get('department'))
+        {{-- <label for='departments'>* Your department:</label>
+        <select id='departments' name='departments' value='{{ old('department') }}'>
+            @foreach ($departments as $key => $value)
+                <option value={{ $key }}> {{ $value }} </option>
+            @endforeach
+        </select> --}}
+
+        @if ($errors->get('department'))
             <div class='error'>{{ $errors->first('department') }}</div>
-        @endif --}}
+        @endif
 
 
 
