@@ -204,8 +204,14 @@ class PracticeController extends Controller
         dump ($department);
     }
 
+    public function practice12()
+    {
+       $ratings = Rating::orderBy('id', 'ASC')->get();
+        dump($ratings->toArray());
+    }
 
-/*
+/*        $ratings = Rating::orderBy('id', 'ASC')->get();
+
 
     public function practice11()
     {

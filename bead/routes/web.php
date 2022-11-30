@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PracticeController;
+use App\Http\Controllers\RatingController;
 
 
 Route::get('facade-examples', function () {
@@ -35,20 +36,28 @@ Route::get('/example', function () {
 
 # All Projects
 Route::get('/projects', [ProjectController::class, 'index']);
-
 # Make sure the create route comes before the `/projects/{slug}` route so it takes precedence
 Route::get('/projects/create', [ProjectController::class, 'create']);
-
 # Note the use of the post method in this route
 Route::post('/projects', [ProjectController::class, 'store']);
-
 # Individual Project
 Route::get('/projects/{title}', [ProjectController::class, 'show']);
 
 Route::get('/rubric', function () {
     return 'Here is your current rubric...';
 });
-Route::get('/practice', [PracticeController::class, 'practice11']);
+
+Route::get('/ratings', [RatingController::class, 'index']);
+
+
+//Route::get('/ratings', [RatingController::class, 'index']);
+
+/*Route::get('/ratings/{handle}', function($handle) {
+    return $handle;
+    });*/
+//Route::get('/ratings/{handle}', [RatingController::class, 'show']);
+
+Route::get('/practice', [PracticeController::class, 'practice12']);
 
 
 

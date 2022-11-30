@@ -22,7 +22,6 @@ this .css file does not exist yet, but we can create it
 
         {{ csrf_field() }}
 
-
         <label for='title'>* Project Title:</label>
         <input type='text' name='title' id='title' value='{{ old('title') }}'>
         @if ($errors->get('title'))
@@ -66,9 +65,6 @@ this .css file does not exist yet, but we can create it
         @if ($errors->get('department'))
             <div class='error'>{{ $errors->first('department') }}</div>
         @endif
-
-
-
         <br>
 
         <label for='location'>* Location Project takes place:</label>
