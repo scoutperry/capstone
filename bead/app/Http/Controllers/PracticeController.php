@@ -210,7 +210,39 @@ class PracticeController extends Controller
         dump($ratings->toArray());
     }
 
-/*        $ratings = Rating::orderBy('id', 'ASC')->get();
+    public function practice13()
+    {
+        #test findBySlug function of Project Model
+        $project = Project::findBySlug('aliquam-accusamus-deleniti-enim-et');
+        dump($project->department_id);
+    }
+
+    public function practice14()
+    {
+        #test findByName function of Department Model
+        $department = Department::findByName('DEAI');
+        dump($department->id);
+    }
+
+    public function practice15()
+    {
+        #test findByID function of Department Model
+        $department = Department::findById(3);
+        dump($department->name);
+    }
+    public function practice16()
+    {
+        #get dept name from project
+        $project = Project::findBySlug('aliquam-accusamus-deleniti-enim-et');
+        $department = Department::findById($project->department_id);
+
+        dump($project);
+        dump($department->name);
+
+    }
+
+
+/*        $project = Project::findBySlug($slug);
 
 
     public function practice11()

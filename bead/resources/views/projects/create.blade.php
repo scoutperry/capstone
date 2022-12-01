@@ -43,7 +43,7 @@ this .css file does not exist yet, but we can create it
         @endif
         <br>
 
-        <label for='department'>* Your department:</label>
+        {{-- <label for='department'>* Your department:</label>
         <select id='department' name='department' value='{{ old('department') }}'>
             <option value=null> Select </option>
             <option value='Development'> Development </option>
@@ -53,14 +53,14 @@ this .css file does not exist yet, but we can create it
             <option value='Facilites'> Facilites </option>
             <option value='Education'>Education</option>
             <option value='Collections'>Collections</option>
-        </select>
+        </select> --}}
 
-        {{-- <label for='departments'>* Your department:</label>
+        <label for='departments'>* Your department:</label>
         <select id='departments' name='departments' value='{{ old('department') }}'>
             @foreach ($departments as $key => $value)
-                <option value={{ $key }}> {{ $value }} </option>
+                <option value='{{ $key }}'> {{ $value }} </option>
             @endforeach
-        </select> --}}
+        </select>
 
         @if ($errors->get('department'))
             <div class='error'>{{ $errors->first('department') }}</div>

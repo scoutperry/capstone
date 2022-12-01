@@ -9,6 +9,20 @@ class Department extends Model
 {
     use HasFactory;
 
+    public static function findById($id)
+    {
+        #Find Department by Id number
+         return self::where('id', '=', $id)->first();
+ 
+    }
+
+    public static function findByName($name)
+    {
+        #Find Department by name
+         return self::where('name', '=', $name)->first();
+ 
+    }
+
     public function ratings()
     {
     # Department has many Ratings

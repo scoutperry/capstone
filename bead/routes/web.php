@@ -57,7 +57,7 @@ Route::get('/ratings', [RatingController::class, 'index']);
     });*/
 //Route::get('/ratings/{handle}', [RatingController::class, 'show']);
 
-Route::get('/practice', [PracticeController::class, 'practice12']);
+Route::get('/practice', [PracticeController::class, 'practice16']);
 
 
 

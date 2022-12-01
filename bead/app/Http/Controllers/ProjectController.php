@@ -74,13 +74,9 @@ class ProjectController extends Controller
  # Note: If validation fails, it will automatically redirect the visitor back to the form page
  # and none of the code that follows will execute.
 
- $department_id;
- $departments = Department::latest('name')->get();
- foreach ($departments as $department) {
-     if ($department['name'] == $request->department)
-     $department_id = $department['id'];
-
- }
+        #Turn department name into department_id
+        $department = Department::findByName($request->department);
+        $department_id = $department->id;
 
         # Instantiate a new Project Model object
         $project = new Project();
@@ -89,7 +85,6 @@ class ProjectController extends Controller
         $project->title = $request->title;
         $project->staff_first = $request->staff_first;
         $project->staff_last = $request->staff_last;
-       // $project->department = $request->department;
         $project->location = $request->location;
         $project->additional_staff = $request->additional_staff;
         $project->estimated_cost = $request->estimated_cost;
@@ -113,22 +108,21 @@ class ProjectController extends Controller
 
     public function show(Request $request, $slug)
     {
-        
-        $project = Project::findBySlug($slug);
-        if (!$project) {
-            return redirect('/projects')->with(['flash-alert' => 'Project not found.']);
-        }
-        else
-        $departments = Department::latest('name')->get();
-        foreach ($departments as $department) {
-            if ($department['id'] == $project->department_id)
-            $departmentName = $department['name'];
-            }
-        return view('projects/show', [
-            'project' => $project,
-            'departmentName' => $departmentName,
 
-        ]);
+                #get dept name from project
+                $project = Project::findBySlug($slug);
+                if (!$project) {
+                    return redirect('/projects')->with(['flash-alert' => 'Project not found.']);
+                }
+                else{
+                    $department = Department::findById($project->department_id);
+                    $departmentName = $department->name;
+        
+                    return view('projects/show', [
+                        'project' => $project,
+                        'departmentName' => $departmentName,
+                    ]);
+                }
     }
 
 }
