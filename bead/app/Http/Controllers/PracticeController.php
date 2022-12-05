@@ -241,8 +241,101 @@ class PracticeController extends Controller
 
     }
 
+    public function practice17()
+    {
+        #get all projects ---returns null
+        $projects = Project::all()->toArray();
+        $ratings = Rating::all()->toArray();
+        foreach ($projects as $title) {
+            $project = Project::where('title', '=', $title)->first();
+            dump($project);
 
-/*        $project = Project::findBySlug($slug);
+        }
+
+    }
+    public function practice18()
+    {
+        #accidental way to get waaaay too much info
+        $project = Project::find(1);
+        //dump($project->id);
+        //dump($project->title);
+        $grade = $project->wherePivot('grade');
+        dump($grade);
+
+    }
+    public function practice19()
+    {
+        # Eager load users to reduce number of queries
+        # (Suggestion: Try this without the `with` and watch how it greatly increases the number of queries)
+        $projects = Project::with('ratings')->get();
+    
+        foreach ($projects as $project) {
+            if ($project->ratings->count() == 0) {
+                dump($project->title . ' is not yet rated');
+            } else {
+                dump($project->title . ' is evaluated on the following perameters:');
+    
+                foreach ($project->ratings as $rating) {
+                    dump($rating->measure);
+                }
+            }
+        }
+    }
+
+
+    public function practice20()
+    {
+        # Eager load users to reduce number of queries
+        # (Suggestion: Try this without the `with` and watch how it greatly increases the number of queries)
+        $projects = Project::with('ratings')->get();
+    
+        foreach ($projects as $project) {
+            if ($project->ratings->count() == 0) {
+                dump($project->title . ' is not yet rated');
+            } else {
+                dump($project->title . ' is evaluated on the following perameters:');
+    
+                foreach ($project->ratings as $rating) {
+                    dump($rating->measure);
+                    dump($rating->pivot->grade);
+                }
+            }
+        }
+    }
+
+    public function practice21()
+    {
+        $projects = Project::with('ratings')->get();
+        $rateCollection = [];
+        $projectselect;
+        foreach ($projects as $project) {
+            if ($project->slug =='vero-fuga-nihil') {
+                $projectselect = $project;
+            }
+        };
+        if ($projectselect->ratings->count() == 0){
+                $department = Department::findById($project->department_id);
+                $departmentName = $department->name;
+                dump($projectselect);
+                dump($departmentName);
+        }else{
+                $department = Department::findById($project->department_id);
+                $departmentName = $department->name;
+                foreach ($projectselect->ratings as $rating) {
+                    $ratingArray = [
+                        $rating->measure,
+                        $rating->pivot->grade
+                        ];
+                    array_push($rateCollection, $ratingArray);
+                }
+                dump($department);
+                dump($rateCollection);
+                dump($departmentName);                    
+        }
+    }
+
+/*            $pivot->notes
+
 
 
     public function practice11()

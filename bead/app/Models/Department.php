@@ -9,6 +9,13 @@ class Department extends Model
 {
     use HasFactory;
 
+    public static function getForDropdown()
+    {
+        # Get data for departments in alphabetical order by name
+        return self::orderBy('name')->select(['id', 'name'])->get();
+
+    }
+
     public static function findById($id)
     {
         #Find Department by Id number

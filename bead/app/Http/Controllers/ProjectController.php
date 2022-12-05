@@ -28,13 +28,16 @@ class ProjectController extends Controller
     public function create(Request $request) 
     {
         #for a departments dropdown
-        $departments = ['Select',];
+        $departments = Department::getForDropdown();
+        return view('projects/create', ['departments' => $departments]);
+
+        /*$departments = ['Select',];
         $deptColl = Department::orderBy('id')->get();
         $deptArray = ($deptColl->toArray());
 
         foreach($deptArray as $value) {
             $departments [] = array_pop($value);
-        }
+        }*/
 
         return view('projects/create', [
             'departments' => $departments,
@@ -110,7 +113,7 @@ class ProjectController extends Controller
     {
 
                 #get dept name from project
-                $project = Project::findBySlug($slug);
+               /* $project = Project::findBySlug($slug);
                 if (!$project) {
                     return redirect('/projects')->with(['flash-alert' => 'Project not found.']);
                 }
@@ -122,7 +125,49 @@ class ProjectController extends Controller
                         'project' => $project,
                         'departmentName' => $departmentName,
                     ]);
+                }*/
+
+        #Incororate ratings with project
+        $projects = Project::with('ratings')->get();
+        $evaluations = [];
+        $projectselect;
+        foreach ($projects as $project) {
+            if ($project->slug == $slug) {
+                $projectselect = $project;
+            }
+        };
+        if (!$projectselect) {
+            return redirect('/projects')->with(['flash-alert' => 'Project not found.']);
+        }else{
+            if ($projectselect->ratings->count() == 0){
+                $department = Department::findById($project->department_id);
+                $departmentName = $department->name;
+                $evaluations = 0;
+
+                return view('projects/show', [
+                    'projectselect' => $projectselect,
+                    'departmentName' => $departmentName,
+
+                    'evaluations' => $evaluations,
+
+                ]);
+            }else{
+                $department = Department::findById($project->department_id);
+                $departmentName = $department->name;
+                foreach ($projectselect->ratings as $rating) {
+                    $ratingArray = [
+                        $rating->measure,
+                        $rating->pivot->grade
+                        ];
+                    array_push($evaluations, $ratingArray);
                 }
+                return view('projects/show', [
+                    'projectselect' => $projectselect,
+                    'departmentName' => $departmentName,
+                    'evaluations' => $evaluations,
+                ]);                                    
+            }
+        }
     }
 
 }

@@ -20,6 +20,20 @@ class RatingController extends Controller
 
     }
 
+    public function create(Request $request) 
+    {
+
+        /*$departments = ['Select',];
+        $deptColl = Department::orderBy('id')->get();
+        $deptArray = ($deptColl->toArray());
+
+        foreach($deptArray as $value) {
+            $departments [] = array_pop($value);
+        }*/
+
+        return view('ratings/create');
+
+    }
     /*public function show(Request $request, $slug)
     {
         

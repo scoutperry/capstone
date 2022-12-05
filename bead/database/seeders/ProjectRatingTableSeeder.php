@@ -18,7 +18,9 @@ class ProjectRatingTableSeeder extends Seeder
     public function run()
     {
     # Goal: Add ratings to a project
-    //$project = Project::where('slug', '=', 'love-stories-from-the-national-portrait-gallery-london')->first();
+
+    //$projects = Project::all();
+
     $project = Project::find(1);
     
     $ratings = [

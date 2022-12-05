@@ -43,7 +43,7 @@ this .css file does not exist yet, but we can create it
         @endif
         <br>
 
-        {{-- <label for='department'>* Your department:</label>
+        <label for='department'>* Your department:</label>
         <select id='department' name='department' value='{{ old('department') }}'>
             <option value=null> Select </option>
             <option value='Development'> Development </option>
@@ -53,14 +53,18 @@ this .css file does not exist yet, but we can create it
             <option value='Facilites'> Facilites </option>
             <option value='Education'>Education</option>
             <option value='Collections'>Collections</option>
-        </select> --}}
-
-        <label for='departments'>* Your department:</label>
-        <select id='departments' name='departments' value='{{ old('department') }}'>
-            @foreach ($departments as $key => $value)
-                <option value='{{ $key }}'> {{ $value }} </option>
-            @endforeach
         </select>
+
+        {{-- <label for='department_id'>* Your department:</label>
+
+        <select test='department-dropdown' name='department_id'>
+            <option value=''>Choose one...</option>
+            <select id='departments' name='departments' value='{{ old('department') }}'>
+                @foreach ($departments as $department)
+                    <option value='{{ $department->id }}' {{ old('department_id') == $department->id ? 'selected' : '' }}>
+                        {{ $department->name }} </option>
+                @endforeach
+            </select> --}}
 
         @if ($errors->get('department'))
             <div class='error'>{{ $errors->first('department') }}</div>

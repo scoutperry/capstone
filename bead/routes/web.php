@@ -48,6 +48,7 @@ Route::get('/rubric', function () {
 });
 
 Route::get('/ratings', [RatingController::class, 'index']);
+Route::get('/ratings', [RatingController::class, 'create']);
 
 
 //Route::get('/ratings', [RatingController::class, 'index']);
@@ -57,7 +58,7 @@ Route::get('/ratings', [RatingController::class, 'index']);
     });*/
 //Route::get('/ratings/{handle}', [RatingController::class, 'show']);
 
-Route::get('/practice', [PracticeController::class, 'practice16']);
+Route::get('/practice', [PracticeController::class, 'practice21']);
 
 
 
