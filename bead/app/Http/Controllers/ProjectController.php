@@ -9,7 +9,6 @@ use App\Models\Project;
 use App\Models\Rating;
 use App\Models\Department;
 
-
 class ProjectController extends Controller
 {
     public function index()
@@ -59,6 +58,7 @@ class ProjectController extends Controller
             'title' => 'required',
             'staff_first' => 'required',
             'staff_last' => 'required',
+            //'slug' => 'required|unique:books,slug,alpha_dash',
             'department' => 'required',
             'location' => 'required',
             'additional_staff' => '',
@@ -111,23 +111,7 @@ class ProjectController extends Controller
 
     public function show(Request $request, $slug)
     {
-
-                #get dept name from project
-               /* $project = Project::findBySlug($slug);
-                if (!$project) {
-                    return redirect('/projects')->with(['flash-alert' => 'Project not found.']);
-                }
-                else{
-                    $department = Department::findById($project->department_id);
-                    $departmentName = $department->name;
-        
-                    return view('projects/show', [
-                        'project' => $project,
-                        'departmentName' => $departmentName,
-                    ]);
-                }*/
-
-        #Incororate ratings with project
+        #Incorporate ratings with project
         $projects = Project::with('ratings')->get();
         $evaluations = [];
         $projectselect;
@@ -169,5 +153,70 @@ class ProjectController extends Controller
             }
         }
     }
+
+    public function edit(Request $request, $slug)
+    {
+        $project = Project::where('slug', '=', $slug)->first();
+        $departments = Department::getForDropdown();
+
+        if (!$project) {
+            return redirect('/projects')->with(['flash-alert' => 'Project not found.']);
+        }
+
+        return view('projects/edit', [
+            'project' => $project,
+            'departments' => $departments
+        ]);
+    }
+    /**
+    * PUT /books
+    */
+    public function update(Request $request, $slug)
+    {
+        $project = Project::where('slug', '=', $slug)->first();
+
+        $request->validate([
+            'title' => 'required',
+            'staff_first' => 'required',
+            'staff_last' => 'required',
+            //'slug' => 'required|unique:books,slug,' . $book->id . '|alpha_dash',
+            'department' => 'required',
+            'location' => 'required',
+            'additional_staff' => '',
+            'estimated_cost' => 'required|numeric',
+            'additional_equip' => '',
+            'additional_services' => '',
+            'summary' => 'required',
+            'has_dependent' => '',
+            'depends_on' => '',
+            'estimated_duration' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required'
+    ]);
+
+    $project->slug = str_replace(" ","-",(strtolower($request->title)));
+    $project->title = $request->title;
+    $project->staff_first = $request->staff_first;
+    $project->staff_last = $request->staff_last;
+    $project->location = $request->location;
+    $project->additional_staff = $request->additional_staff;
+    $project->estimated_cost = $request->estimated_cost;
+    $project->additional_equip = $request->additional_equip;
+    $project->additional_services = $request->additional_services;
+    $project->summary = $request->summary;
+    $project->has_dependent = $request->has_dependent;
+    $project->depends_on = $request->depends_on;
+    $project->estimated_duration = $request->estimated_duration;
+    $project->start_date = $request->start_date;
+    $project->end_date = $request->end_date;
+    $project->department_id = $department_id;
+        $project->save();
+
+        return redirect('/projects/'.$slug.'/edit')->with(['flash-alert' => 'Your changes were saved.']);
+    }
+
+
+
+
 
 }
