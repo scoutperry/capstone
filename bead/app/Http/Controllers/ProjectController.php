@@ -215,8 +215,4 @@ class ProjectController extends Controller
         return redirect('/projects/'.$slug.'/edit')->with(['flash-alert' => 'Your changes were saved.']);
     }
 
-
-
-
-
 }

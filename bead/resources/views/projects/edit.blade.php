@@ -56,7 +56,6 @@ this .css file does not exist yet, but we can create it
         </select>
 
         {{-- <label for='department_id'>* Your department:</label>
-
         <select test='department-dropdown' name='department_id'>
             <option value=''>Choose one...</option>
             <select id='departments' name='departments' value='{{ old('department') }}'>
