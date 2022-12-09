@@ -41,28 +41,42 @@ Route::get('/projects/create', [ProjectController::class, 'create']);
 # Note the use of the post method in this route
 Route::post('/projects', [ProjectController::class, 'store']);
 # Individual Project
-Route::get('/projects/{title}', [ProjectController::class, 'show']);
+Route::get('/projects/{slug}', [ProjectController::class, 'show']);
+# Show the form to edit a specific book
+Route::get('/projects/{slug}/edit', [ProjectController::class, 'edit']);
+# Process the form to edit a specific book
+Route::put('/projects/{slug}', [ProjectController::class, 'update']);
 
-Route::get('/rubric', function () {
-    return 'Here is your current rubric...';
-});
-
+# All Ratings
 Route::get('/ratings', [RatingController::class, 'index']);
-Route::get('/ratings', [RatingController::class, 'create']);
 
+/*  These will change the Ratings info such as the 'measure', 'handle', or 'active' properties
+Route::get('/ratings/create', [RatingController::class, 'create']);
+Route::post('/ratings', [RatingController::class, 'store']);
+Route::get('/ratings/{handle}/edit', [RatingController::class, 'edit']);
+Route::put('/projects/{slug}', [ProjectController::class, 'update']);
+*/
 
-//Route::get('/ratings', [RatingController::class, 'index']);
+#form to add grades to project found with {slug}
+Route::get('/ratings/{slug}/add', [RatingController::class, 'add']);
+#persist grades to project found with {slug} to database
+Route::post('/ratings/{slug}/save', [RatingController::class, 'save']);
+#update grades
+Route::put('/ratings/{slug}/update', [RatingController::class, 'update']);
 
-/*Route::get('/ratings/{handle}', function($handle) {
+/*
+Route::get('/ratings/{handle}', function($handle) {
     return $handle;
-    });*/
-//Route::get('/ratings/{handle}', [RatingController::class, 'show']);
+    });
+Route::get('/ratings/{handle}', [RatingController::class, 'show']);
+*/
 
 Route::get('/practice', [PracticeController::class, 'practice21']);
 
-
-
 /*
+Route::get('/filter/{$slug}/{$department}', function($x, $y) {
+    return 'Here are all the projects in the category ' . $x . ' and ' . $y;
+});
 Route::get('/filter/{category}/{subcategory}', function($x, $y) {
     return 'Here are all the projects in the category ' . $x . ' and ' . $y;
 }); 

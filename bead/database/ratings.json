@@ -114,8 +114,8 @@
         "active": 1,
         "department_id": 3
     },
-    "includes_psychiatric": {
-        "measure": "This project includes people with psychiatric disabilities",
+    "includes_mental": {
+        "measure": "This project includes people with mental disabilities",
         "active": 1,
         "department_id": 3
     },
@@ -335,7 +335,7 @@
         "department_id": 7
     },
     "swing_space": {
-        "measure": "This project will not require closure of galleries for swing space/storage of displaced material;",
+        "measure": "This project will not require closure of galleries for swing space/storage of displaced material",
         "active": 1,
         "department_id": 7
     },
