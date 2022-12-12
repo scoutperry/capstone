@@ -9,6 +9,14 @@ class Rating extends Model
 {
     use HasFactory;
 
+    public static function allMeasures()
+    {
+        return self::where('department_id', '=', rand(1,7))->select(['handle', 'measure'])->get();
+
+        //return self::orderBy('id')->select(['handle', 'measure', 'department_id'])->get();
+
+    }
+
     public function department()
     {
         # Rating belongs to Department

@@ -8,13 +8,23 @@ this .css file does not exist yet, but we can create it
 
     <link href='/css/bead.css' rel='stylesheet'> --}}
 @endsection
-
+@section('title')
+    Rate {{ $project->title }}
+@endsection
 @section('content')
-    <h1>Rate This Project</h1>
-    <form method='POST' action='/ratings'>
+    <h1>Rate {{ $project->title }}</h1>
+    <form method='POST' action='/ratings/{{ $project->title }}/save'>
         {{ csrf_field() }}
         <br>
-        {{-- Responsive code here --}}
+
+
+        @foreach ($ratings as $rating)
+            <label for='{{ $rating->handle }}'>{{ $rating->measure }}:</label>
+            <input type="range" id='{{ $rating->handle }}' name='{{ $rating->handle }}' min="1" max="5">
+            <br>
+        @endforeach
+
+        {{-- Responsive code here
         <fieldset>
             <label for="existing_donor">This project can be funded from existing donors:</label>
             <input type="range" id="existing_donor" name="existing_donor" min="1" max="5">
@@ -358,7 +368,7 @@ this .css file does not exist yet, but we can create it
                 other sorts of locations):</label>
             <input type="range" id="resource_conflict" name="resource_conflict" min="1" max="5">
             <br>
-        </fieldset>
+        </fieldset> --}}
         <button type='submit'>Submit</button>
     </form>
 @endsection

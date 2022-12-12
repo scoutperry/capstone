@@ -46,29 +46,40 @@ class RatingController extends Controller
         /*$departments = ['Select',];
         $deptColl = Department::orderBy('id')->get();
         $deptArray = ($deptColl->toArray());
-
+        
         foreach($deptArray as $value) {
             $departments [] = array_pop($value);
         }*/
+        $ratings = Rating::allMeasures();
+        $departmentId = rand(1,7);
         $project = Project::findBySlug($slug);
-        #I need a query of  collection of ratings by department_id
-        # TODO: Handle case where project isn’t found for the given slug
-    
-        return view('ratings/add', ['project' => $project]);
+        # TODO: Handle case where project isn’t found for the given slug    
+        return view('ratings/add', [
+            'project' => $project,
+            'ratings' => $ratings,
+            'departmentId' => $departmentId,
 
+        ]);
     }
 
 
     public function save(Request $request, $slug)
     {
+        $slug = str_replace(" ","-",(strtolower($slug)));
+        $project = Project::findBySlug($slug);
+        $results = array_reverse($request->all());
+        array_pop($results);
+        $results = array_reverse($results);
+        dump($results);
 
-        # TODO: Possibly add validation to make sure we have notes ?
-        //$user = $request->user();
-        $project = Book::findBySlug($slug);
+        foreach($results as $x => $x_value) {
+            $rating = Rating::where('handle', '=', $x)->first();
+            $project->ratings()->save($rating, ['grade' => $x_value]);
 
-        $user->projects()->save($project, ['grade' => $request->grade]);
+        }
+        return redirect('/projects')->with(['flash-alert' => 'The project ' . $project->title. ' evaluation was submitted.']);
 
-        return redirect('/list')->with(['flash-alert' => 'The project ' . $project->title. ' evaluation was submitted.']);
+
     }
     /*
 
