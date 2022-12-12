@@ -31,13 +31,6 @@ class PracticeController extends Controller
         dump($result);
     }
 
-    public function practice2()
-    {
-        # Get a row by id
-        $result = Project::find(1);
-        dump($result);
-    }
-
     public function practice3()
     {
        # Throw an exception if the lookup fails
@@ -89,105 +82,25 @@ class PracticeController extends Controller
 
     public function practice10()
     {
-
-        //$result = Project::orderBy('staff_last')->get();
-        //$projects = $result->toArray();
-        //dump($projects);
-
-
-        //foreach ($projects as $slug) {
-
-
-            $project = Project::where('slug', '=', 'love-stories-from-the-national-portrait-gallery-london')->first();
-            //$project = Project::where('slug', '=', $slug)->first();
+            $projects = Project::all()->toArray();
+            //$project = Project::find(rand(1,5))->toArray();
             //dump($project);
-            //$ratings = Rating::orderBy('slug')->value('title');
+            $ratings = Rating::all()->toArray();
+            $handles = [];
+            foreach($ratings as $rating){
+                    array_push($handles, $ratings['handle']);
+                };        
+            //dump($handles);
+            foreach($projects as $project){
 
-            $ratings = [
-                'existing_donor',
-                'donor_area',
-                'foundation_timing',
-                'strategic_plan',
-                'campus_plan',
-                'campaign_priority',
-                'program_impact',
-                'legal_obligation',
-                'fund_obligation',
-                'completes_cert',
-                'support',
-                'grant',
-                'historic_credit',
-                'visitation_revenue',
-                'audience_expansion',
-                'special_ticket',
-                'other_potential',
-                'deai_staff',
-                'interpretation',
-                'includes_race',
-                'includes_gender',
-                'includes_sexuality',
-                'includes_physical',
-                'includes_psychiatric',
-                'primary_representation',
-                'secondary_representation',
-                'diverse_audience',
-                'diverse_support',
-                'diverse_vendor',
-                'curatorial_staff',
-                'tech',
-                'community',
-                'academic',
-                'permanent_collection',
-                'new_donors',
-                'visitor_experience',
-                'collection_strength',
-                'storage_turnover',
-                'conservation_opportunity',
-                'interpretive_update',
-                'enhance_display',
-                'steward',
-                'code_law_regulation',
-                'art_environment',
-                'hvac_art',
-                'hvac_nonart',
-                'service_improvement',
-                'efficient_process',
-                'public_aesthetics',
-                'nonpublic_aesthetics',
-                'education_staff',
-                'visitation',
-                'program_enhancement',
-                'curricular_connection',
-                'programming_space',
-                'augmentation',
-                'families',
-                'accessible',
-                'way_finding',
-                'view_variety',
-                'existing_community',
-                'new_community',
-                'education_market',
-                'deai_initiatives',
-                'storage_capacity',
-                'collections_access',
-                'site_storage',
-                'swing_space',
-                'add_storage',
-                'positive_impact',
-                'inventory',
-                'av_staff',
-                'current_collection',
-                'loan_embargo',
-                'acquisitions_embargo',
-                'resource_conflict'
-                ];
-            dump($ratings);
+                foreach ($handles as $handle) {
+                    $rating = Rating::where('handle', '=', $handle)->first();
+                    //dump($rating->handle);
+                    //$project->ratings()->save($rating, ['grade' => rand(1,5)]);
+                }
+            };    
+            #yes I truly deeply messed this up    
 
-            foreach ($ratings as $handle) {
-                $rating = Rating::where('handle', '=', $handle)->first();
-                //dump($rating);
-                //$project->ratings()->save($rating, ['grade' => rand(1,5)]);
-            }
         //}
 
     }
@@ -333,8 +246,65 @@ class PracticeController extends Controller
                 dump($departmentName);                    
         }
     }
+    
+    public function practice22()
+    {
+        //$project = Project::find(2);
+        $ratings = Rating::all()->toArray();
+        $measures = [];
+        foreach($ratings as $rating){
+            if($rating['department_id']== 2){
+                array_push($measures, $rating['measure']);
 
-/*            $pivot->notes
+            }
+            //dump($rating['measure']);
+        };
+        dump($measures);
+
+    }
+
+    public function practice23()
+    {
+        $departments = Department::all()->toArray();
+        $departmentNames = [];
+        foreach($departments as $department){
+                array_push($departmentNames, $department['name']);
+            };        
+        dump($departmentNames);
+
+    }
+
+    public function practice24()
+    {
+        $projects = Project::all()->toArray();
+        $ratings = Rating::all()->toArray();
+        $handles = [];
+        $i=0;
+        $x=0;
+        while( $x < 6) {
+            $project = $projects[$x];
+            dump('project '. $x);
+
+            while( $i < 76) {
+                $rating = $ratings[$i];
+                dump('rating '.$i );
+                $i++;
+            }
+        $x++;
+
+        }
+    #welp I tried. A well designed recursive function might do it
+    }
+
+    public function practice25()
+    {
+        $ratings = Rating::allMeasures()->toArray();
+        dump($ratings);
+    }
+
+
+/*       $ratings = Rating::allMeasures();
+
 
 
 

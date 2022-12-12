@@ -7,7 +7,6 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\RatingController;
 
-
 Route::get('facade-examples', function () {
     var_dump(Hash::make('secret123'));
     var_dump(App::environment());
@@ -25,13 +24,6 @@ Route::get('facade-examples', function () {
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('/example', function () {
-    return response()->json([
-        'title' => 'The Great Gatsby',
-        'author' => 'F. Scott Fitzgerald',
-    ]);
 });
 
 # All Projects
@@ -71,7 +63,7 @@ Route::get('/ratings/{handle}', function($handle) {
 Route::get('/ratings/{handle}', [RatingController::class, 'show']);
 */
 
-Route::get('/practice', [PracticeController::class, 'practice21']);
+Route::get('/practice', [PracticeController::class, 'practice25']);
 
 /*
 Route::get('/filter/{$slug}/{$department}', function($x, $y) {

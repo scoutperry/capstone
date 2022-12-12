@@ -112,24 +112,24 @@ class ProjectController extends Controller
     public function show(Request $request, $slug)
     {
         #Incorporate ratings with project
-        $projects = Project::with('ratings')->get();
+        $results = Project::with('ratings')->get();
         $evaluations = [];
-        $projectselect;
-        foreach ($projects as $project) {
-            if ($project->slug == $slug) {
-                $projectselect = $project;
+        $project;
+        foreach ($results as $result) {
+            if ($result->slug == $slug) {
+                $project = $result;
             }
         };
-        if (!$projectselect) {
+        if (!$project) {
             return redirect('/projects')->with(['flash-alert' => 'Project not found.']);
         }else{
-            if ($projectselect->ratings->count() == 0){
+            if ($project->ratings->count() == 0){
                 $department = Department::findById($project->department_id);
                 $departmentName = $department->name;
                 $evaluations = 0;
 
                 return view('projects/show', [
-                    'projectselect' => $projectselect,
+                    'project' => $project,
                     'departmentName' => $departmentName,
 
                     'evaluations' => $evaluations,
@@ -138,7 +138,7 @@ class ProjectController extends Controller
             }else{
                 $department = Department::findById($project->department_id);
                 $departmentName = $department->name;
-                foreach ($projectselect->ratings as $rating) {
+                foreach ($project->ratings as $rating) {
                     $ratingArray = [
                         $rating->measure,
                         $rating->pivot->grade
@@ -146,7 +146,7 @@ class ProjectController extends Controller
                     array_push($evaluations, $ratingArray);
                 }
                 return view('projects/show', [
-                    'projectselect' => $projectselect,
+                    'project' => $project,
                     'departmentName' => $departmentName,
                     'evaluations' => $evaluations,
                 ]);                                    
