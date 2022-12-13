@@ -1,11 +1,282 @@
+h1 {
+    font-family: "Helvetica", sans-serif;
+    text-align: left;
+
+}
+
+html {
+    /* http://snook.ca/archives/html_and_css/font-size-with-rem */
+    font-size: 62.5%;
+    margin: 20px;
+    color: #111;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    /* Default font-size */
+    font-size: 1.4rem;
+
+    padding: 0;
+    margin: 20px;
+
+    /* https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/ */
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+section#main {
+    /* https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/ */
+    flex: 1;
+
+    text-align: center;
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+    padding-bottom: 50px;
+}
+
+header {
+    text-align: left;
+    /*margin-top: 16px;*/
+    display: inline;
+}
+
 #logo {
-    /* 
-    Actual logo width is 725; 
-    we’re displaying half-size so it looks sharp on high-resolution displays 
-    */
-    width: 175px;
+    width: 316px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /*padding: 10px;*/
+    padding: 15%;
+}
+
+footer {
+    text-align: center;
+    background-color: #eee;
+    padding: 20px;
+}
+
+
+/*----------------------------------------------------
+Nav bar
+-----------------------------------------------------*/
+/* Navbar container */
+.navbar {
+    overflow: hidden;
+    font-family: Arial;
+    float: right;
+
+}
+
+/* Links inside the navbar */
+.navbar a {
+    font-size: 16px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    font-family: inherit;
+    /* Important for vertical align on mobile phones */
+    margin: 0;
+    /* Important for vertical align on mobile phones */
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    /*background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);*/
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover
+.dropdown-content a:hover {
+    background-color: #ddd;
+}*/
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*----------------------------------------------------
+Typography
+-----------------------------------------------------*/
+a.active:link,
+a.active:visited,
+a.active:active,
+a.active:hover {
+    color: #18bc9c;
+}
+
+p {
+    line-height: 1.5;
 }
 
 h1 {
-    font-family: "Helvetica", sans-serif;
+    text-align: left;
+    font-size: 2.2rem;
+}
+
+h2 {
+    text-align: center;
+    font-size: 3.0rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+/*----------------------------------------------------
+Forms
+-----------------------------------------------------*/
+.button-link {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #0d6efd;
+    font-size: 1.6rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn {
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+
+label,
+legend {
+    display: block;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: 1.2rem;
+    letter-spacing: .75px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+textarea,
+select {
+    display: block;
+    width: 50%;
+    font-size: 1.5rem;
+    padding: 3px;
+    font-family: Consolas, Courier, monospace;
+    border: 1px solid #ccc;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+    display: inline;
+}
+
+input[type='checkbox']+label,
+input[type='radio']+label {
+    display: inline;
+    font-weight: normal;
+}
+
+ul.inputs {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.inputs label {
+    text-transform: none;
+    font-weight: normal;
+    margin: 0;
+}
+
+.input-info {
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+.error {
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+.globalFormError {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 5px;
+}
+
+.success {
+    color: #3c763d;
+}
+
+.details {
+    font-size: 1.1rem;
+    font-style: italic;
+    text-align: left;
+}
+
+.alert {
+    margin-top: 20px;
+}
+
+ul.alert {
+    list-style-type: none;
+}
+
+
+/*----------------------------------------------------
+MISC
+-----------------------------------------------------*/
+.flash-alert {
+    background-color: yellow;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.clean-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.clean-list li {
+    padding: 0;
+    margin: 0;
 }
