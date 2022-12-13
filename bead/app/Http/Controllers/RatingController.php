@@ -70,7 +70,6 @@ class RatingController extends Controller
         $results = array_reverse($request->all());
         array_pop($results);
         $results = array_reverse($results);
-        dump($results);
 
         foreach($results as $x => $x_value) {
             $rating = Rating::where('handle', '=', $x)->first();

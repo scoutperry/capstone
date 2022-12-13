@@ -114,7 +114,7 @@ class ProjectController extends Controller
         #Incorporate ratings with project
         $results = Project::with('ratings')->get();
         $evaluations = [];
-        $project;
+        $project = 0;
         foreach ($results as $result) {
             if ($result->slug == $slug) {
                 $project = $result;

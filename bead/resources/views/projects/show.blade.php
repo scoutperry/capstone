@@ -41,7 +41,7 @@ this .css file does not exist yet, but we can create it
     <p>{{ $project['start_date'] }}<br></p>
     <h4>Proposed End Data:</h4>
     <p>{{ $project['end_date'] }}<br></p>
-    Staff Contact:<br>
+    <h4>Staff Contact:</h4>
     <p>{{ $project['staff_first'] }} {{ $project['staff_last'] }}<br>
         <br>
         {{ $departmentName }} <br>
