@@ -36,4 +36,11 @@ class Department extends Model
     # Define a one-to-many relationship.
     return $this->hasMany('App\Models\Rating');
     }
+
+    public function projects()
+    {
+    # Department has many Ratings
+    # Define a one-to-many relationship.
+    return $this->hasMany('App\Models\Project');
+    }
 }

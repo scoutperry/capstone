@@ -21,4 +21,11 @@ class Project extends Model
         ->withPivot('grade'); # Must also specify any other fields that should be included when fetching this relationship
     }
 
+    public function department()
+    {
+        # Rating belongs to Department
+        # Define an inverse one-to-many relationship.
+        return $this->belongsTo('App\Models\Department');
+    }
+
 }

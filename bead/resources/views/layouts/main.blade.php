@@ -51,10 +51,11 @@
                 <a href='/account'>Account</a>
             </div>
         </div>
+    </header>
 
-        <section>
-            @yield('content')
-        </section>
+    <section>
+        @yield('content')
+    </section>
 
 
 </body>
